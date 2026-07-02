@@ -23,11 +23,13 @@ export const SITE = {
 };
 
 // Les 4 valeurs de la marque (réfs client, design/)
-export const VALUES = [
-  { label: "Confiance", color: "var(--color-teal)" },
-  { label: "Respect", color: "var(--color-accent)" },
-  { label: "Autonomie", color: "var(--color-sun)" },
-  { label: "Liberté", color: "#7C5CBF" },
+export type ValueIconName = "volant" | "coeur" | "route" | "liberte";
+
+export const VALUES: { label: string; color: string; icon: ValueIconName }[] = [
+  { label: "Confiance", color: "var(--color-teal)", icon: "volant" },
+  { label: "Respect", color: "var(--color-accent)", icon: "coeur" },
+  { label: "Autonomie", color: "var(--color-sun)", icon: "route" },
+  { label: "Liberté", color: "#7C5CBF", icon: "liberte" },
 ];
 
 export const NAV = [

@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import FormulaCard from "../components/FormulaCard.astro";
 import ReviewCard from "../components/ReviewCard.astro";
+import ValueIcon from "../components/ValueIcon.astro";
 import { SITE, FORMULES, AVIS, FAQ, VALUES } from "../consts";
 ---
 
@@ -43,13 +44,16 @@ import { SITE, FORMULES, AVIS, FAQ, VALUES } from "../consts";
 
   <!-- VALEURS -->
   <section class="border-b border-hairline bg-surface">
-    <div class="container-x flex flex-wrap items-center justify-center gap-x-10 gap-y-3 py-6">
+    <div class="container-x flex flex-wrap items-center justify-center gap-x-8 gap-y-4 py-7">
       {
-        VALUES.map((v) => (
-          <span class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em]" style={`color: ${v.color}`}>
-            <span class="h-2.5 w-2.5 rounded-full" style={`background: ${v.color}`} aria-hidden="true" />
-            {v.label}
-          </span>
+        VALUES.map((v, i) => (
+          <>
+            {i > 0 && <span class="hidden h-8 w-px bg-hairline sm:block" aria-hidden="true" />}
+            <span class="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.14em]" style={`color: ${v.color}`}>
+              <ValueIcon name={v.icon} />
+              {v.label}
+            </span>
+          </>
         ))
       }
     </div>
