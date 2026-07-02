@@ -22,14 +22,34 @@ export const SITE = {
   elgeaUrl: "https://www.elgeaweb.fr",
 };
 
-// Les 4 valeurs de la marque (réfs client, design/)
-export type ValueIconName = "volant" | "coeur" | "route" | "liberte";
+// Les 4 valeurs de la marque + leurs promesses (planche client, design/DA_2.jpeg)
+export type ValueIconName = "coeur" | "personnes" | "soleil" | "papillon";
 
-export const VALUES: { label: string; color: string; icon: ValueIconName }[] = [
-  { label: "Confiance", color: "var(--color-teal)", icon: "volant" },
-  { label: "Respect", color: "var(--color-accent)", icon: "coeur" },
-  { label: "Autonomie", color: "var(--color-sun)", icon: "route" },
-  { label: "Liberté", color: "#7C5CBF", icon: "liberte" },
+export const VALUES: { label: string; desc: string; color: string; icon: ValueIconName }[] = [
+  {
+    label: "Confiance",
+    desc: "Apprendre sereinement, dans un climat de confiance et de bienveillance.",
+    color: "var(--color-accent)",
+    icon: "coeur",
+  },
+  {
+    label: "Respect",
+    desc: "Prendre confiance en soi : à chaque étape, vous progressez.",
+    color: "var(--color-teal)",
+    icon: "personnes",
+  },
+  {
+    label: "Autonomie",
+    desc: "À son rythme, sans jugement — chacun son tempo, chacun son chemin.",
+    color: "var(--color-sun)",
+    icon: "soleil",
+  },
+  {
+    label: "Liberté",
+    desc: "Libre de choisir sa route : vous êtes acteur de votre avenir.",
+    color: "#7C5CBF",
+    icon: "papillon",
+  },
 ];
 
 export const NAV = [

@@ -93,4 +93,20 @@ chaleureuse et inclusive — qui remplace la piste « Bleu Électrique ».
 - **Promesse** : « Apprendre à conduire, avancer avec confiance, choisir sa route. »
 - **Zone confirmée : Dordogne** (axe SEO local).
 - Typo web retenue en approximation : Baloo 2 (titres) + Nunito (corps) + Caveat (script).
+  La planche client précise « Nunito Rounded » → Nunito est déjà en corps de texte.
 - ⚠️ Le logo fourni est une image IA → **vectorisation propre à prévoir** avant impression.
+
+### Contrainte forte (retour client, 2026-07-02)
+
+**Aucun symbole automobile** dans la communication : ni volant, ni route, ni
+marquage au sol, ni compteur, ni flammes, ni contour de voiture. Perçus comme
+des codes masculins de l'automobile — contraires au positionnement inclusif.
+**Seule la silhouette du logo officiel a le droit d'évoquer la voiture.**
+
+Mapping officiel des valeurs (planche `design/DA_2.jpeg`) :
+Confiance = cœur corail · Respect = deux personnes turquoise ·
+Autonomie = soleil safran · Liberté = papillon violet — chacune avec sa promesse
+(« Apprendre sereinement », « Prendre confiance en soi », « À son rythme, sans
+jugement », « Libre de choisir sa route »).
+
+Texte de bienvenue fourni par le client → utilisé en intro de la section méthode.

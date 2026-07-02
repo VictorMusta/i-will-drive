@@ -14,13 +14,21 @@ import { SITE, FORMULES, AVIS, FAQ, VALUES } from "../consts";
 
   <!-- HERO -->
   <section class="relative overflow-hidden bg-dark text-on-dark">
-    <div class="hero-road" aria-hidden="true"></div>
+    <div
+      class="absolute inset-0"
+      style="background: radial-gradient(circle at 82% 12%, color-mix(in srgb, var(--color-sun) 22%, transparent), transparent 52%)"
+      aria-hidden="true"
+    ></div>
     <div class="container-x relative z-10 py-20 md:py-28">
       <p class="label" style="color: var(--color-hero-accent)">
         Auto-école · Dordogne
       </p>
 
-      <div class="lane-dash my-6 w-[min(380px,70%)]"></div>
+      <div
+        class="my-6 h-1.5 w-[min(340px,65%)] rounded-full"
+        style="background: linear-gradient(90deg, var(--color-accent), var(--color-sun), var(--color-teal))"
+        aria-hidden="true"
+      ></div>
 
       <h1 class="max-w-[14ch] text-5xl font-extrabold leading-[1.02] md:text-7xl">
         Vous allez <span style="color: var(--color-hero-accent)">conduire.</span>
@@ -44,16 +52,18 @@ import { SITE, FORMULES, AVIS, FAQ, VALUES } from "../consts";
 
   <!-- VALEURS -->
   <section class="border-b border-hairline bg-surface">
-    <div class="container-x flex flex-wrap items-center justify-center gap-x-8 gap-y-4 py-7">
+    <div class="container-x grid gap-8 py-10 sm:grid-cols-2 lg:grid-cols-4">
       {
-        VALUES.map((v, i) => (
-          <>
-            {i > 0 && <span class="hidden h-8 w-px bg-hairline sm:block" aria-hidden="true" />}
-            <span class="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.14em]" style={`color: ${v.color}`}>
+        VALUES.map((v) => (
+          <div class="flex flex-col items-center gap-2.5 text-center">
+            <span style={`color: ${v.color}`}>
               <ValueIcon name={v.icon} />
+            </span>
+            <span class="text-sm font-bold uppercase tracking-[0.14em]" style={`color: ${v.color}`}>
               {v.label}
             </span>
-          </>
+            <p class="max-w-[26ch] text-sm text-muted">{v.desc}</p>
+          </div>
         ))
       }
     </div>
@@ -62,13 +72,15 @@ import { SITE, FORMULES, AVIS, FAQ, VALUES } from "../consts";
   <!-- MÉTHODE -->
   <section id="methode" class="container-x py-20 md:py-28">
     <p class="label">01 — La méthode</p>
-    <h2 class="mt-2 max-w-[20ch] text-3xl font-extrabold md:text-5xl">
-      Un enseignant, pas une usine à permis.
+    <h2 class="mt-2 max-w-[24ch] text-3xl font-extrabold md:text-5xl">
+      Bienvenue chez i will drive.
     </h2>
-    <p class="mt-4 max-w-[60ch] text-lg text-muted">
-      Le même moniteur du début à la fin, qui prend le temps d'expliquer et
-      s'adapte à votre rythme. Des explications claires, un vrai suivi, et la
-      confiance qui vient dès les premières leçons.
+    <p class="mt-4 max-w-[62ch] text-lg text-muted">
+      Chez i will drive, nous pensons qu'apprendre à conduire ne se résume pas à
+      obtenir un permis. C'est gagner en confiance, devenir autonome et prendre
+      sa place sur la route. Ici, chacun avance à son rythme, dans un climat de
+      bienveillance et de respect. Bienvenue dans une nouvelle façon
+      d'apprendre à conduire.
     </p>
 
     <div class="mt-12 grid gap-6 md:grid-cols-3">

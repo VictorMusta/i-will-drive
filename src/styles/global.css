@@ -149,26 +149,7 @@
   }
   .btn-ghost:hover { border-color: currentColor; transform: translateY(-2px); }
 
-  /* marquage au sol — signature de marque */
-  .lane-dash {
-    height: 6px;
-    border-radius: 3px;
-    background: repeating-linear-gradient(90deg,
-      var(--color-hero-accent) 0 30px, transparent 30px 54px);
-  }
-
-  /* route en perspective (fond de hero) */
-  .hero-road {
-    position: absolute;
-    left: 50%; bottom: 0;
-    width: 140%; height: 70%;
-    transform: translateX(-50%);
-    pointer-events: none;
-    background:
-      linear-gradient(to top, color-mix(in srgb, var(--color-hero-accent) 10%, transparent), transparent 60%),
-      conic-gradient(from 90deg at 50% 140%,
-        transparent 0 43deg, rgba(255,255,255,0.06) 43deg 44deg,
-        transparent 44deg 46deg, rgba(255,255,255,0.06) 46deg 47deg,
-        transparent 47deg 360deg);
-  }
+  /* NB : contrainte de marque — aucun symbole automobile (volant, route,
+     marquage au sol, compteur…). La voiture n'apparaît que dans la
+     silhouette du logo officiel. */
 }
