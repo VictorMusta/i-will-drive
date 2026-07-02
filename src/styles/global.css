@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+/* ============================================================
+   IWillDrive — design tokens
+   Palette officielle « Solaire » — fournie par le client
+   (réfs dans design/) : Corail #FF6F61 · Turquoise #00BFAE ·
+   Jaune soleil #FFB703 · Bleu profond #14213D.
+   Vibe : chaleureux, doux, moderne, inclusif.
+   L'ancienne piste « Bleu Électrique » reste disponible via
+   THEME = "electrique" dans src/consts.ts.
+   ============================================================ */
+
+@theme {
+  --font-display: "Baloo 2", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "Nunito", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-script: "Caveat", "Segoe Script", cursive;
+
+  --color-ground: var(--c-ground);
+  --color-surface: var(--c-surface);
+  --color-ink: var(--c-ink);
+  --color-muted: var(--c-muted);
+  --color-hairline: var(--c-hairline);
+  --color-accent: var(--c-accent);
+  --color-accent-deep: var(--c-accent-deep);
+  --color-on-accent: var(--c-on-accent);
+  --color-dark: var(--c-dark);
+  --color-on-dark: var(--c-on-dark);
+  --color-hero-accent: var(--c-hero-accent);
+  --color-go: var(--c-go);
+  --color-sun: var(--c-sun);
+  --color-teal: var(--c-teal);
+}
+
+:root {
+  --c-ground: #FFFBF5;      /* blanc chaud, légèrement crème */
+  --c-surface: #FFFFFF;
+  --c-ink: #14213D;         /* bleu profond */
+  --c-muted: #5C6B85;
+  --c-hairline: #F0E7DC;
+  --c-accent: #FF6F61;      /* corail solaire — CTA */
+  --c-accent-deep: #E85A4C;
+  --c-on-accent: #FFFFFF;
+  --c-dark: #14213D;
+  --c-on-dark: #FFFFFF;
+  --c-hero-accent: #FFB703; /* jaune soleil — accents sur fond sombre */
+  --c-go: #00BFAE;          /* turquoise douce — succès, coches */
+  --c-sun: #FFB703;
+  --c-teal: #00BFAE;
+}
+
+/* Ancienne piste : Bleu Électrique (conservée pour comparaison) */
+[data-theme="electrique"] {
+  --c-ground: #FFFFFF;
+  --c-ink: #0B1220;
+  --c-muted: #5A6478;
+  --c-hairline: #E3E7EF;
+  --c-accent: #1F4BFF;
+  --c-accent-deep: #1438CC;
+  --c-on-accent: #FFFFFF;
+  --c-dark: #0B1220;
+  --c-hero-accent: #5B82FF;
+  --c-go: #2FB573;
+  --c-sun: #FF9D2E;
+  --c-teal: #2FB573;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    background: var(--color-ground);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; animation: none !important; }
+  }
+}
+
+/* ---------- composants réutilisables ---------- */
+@layer components {
+  .container-x {
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.2rem, 4vw, 2.5rem);
+  }
+
+  .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    color: var(--color-muted);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.98rem;
+    font-weight: 700;
+    line-height: 1;
+    border: 0;
+    border-radius: 999px;
+    padding: 0.95rem 1.6rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform .15s ease, background-color .15s ease, box-shadow .15s ease, border-color .15s ease;
+  }
+  .btn .arrow { transition: transform .15s ease; }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  .btn-primary {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--color-accent) 30%, transparent);
+  }
+  .btn-primary:hover { background: var(--color-accent-deep); transform: translateY(-2px); }
+
+  .btn-dark {
+    background: var(--color-ink);
+    color: var(--color-on-dark);
+  }
+  .btn-dark:hover { transform: translateY(-2px); background: color-mix(in srgb, var(--color-ink) 88%, white); }
+
+  .btn-ghost {
+    background: transparent;
+    color: inherit;
+    border: 1.5px solid color-mix(in srgb, currentColor 30%, transparent);
+  }
+  .btn-ghost:hover { border-color: currentColor; transform: translateY(-2px); }
+
+  /* marquage au sol — signature de marque */
+  .lane-dash {
+    height: 6px;
+    border-radius: 3px;
+    background: repeating-linear-gradient(90deg,
+      var(--color-hero-accent) 0 30px, transparent 30px 54px);
+  }
+
+  /* route en perspective (fond de hero) */
+  .hero-road {
+    position: absolute;
+    left: 50%; bottom: 0;
+    width: 140%; height: 70%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background:
+      linear-gradient(to top, color-mix(in srgb, var(--color-hero-accent) 10%, transparent), transparent 60%),
+      conic-gradient(from 90deg at 50% 140%,
+        transparent 0 43deg, rgba(255,255,255,0.06) 43deg 44deg,
+        transparent 44deg 46deg, rgba(255,255,255,0.06) 46deg 47deg,
+        transparent 47deg 360deg);
+  }
+}

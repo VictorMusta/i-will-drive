@@ -1,0 +1,23 @@
+---
+/*
+  Wordmark « i will drive » — approximation typographique du logo client
+  (design/Logo&visuels.jpeg) : « i will » en script chaleureux dégradé
+  soleil→corail, « drive » en rondes dégradé turquoise→bleu.
+  Le logo final vectorisé remplacera ce lockup le moment venu.
+*/
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+---
+
+<span class={`inline-flex items-baseline gap-1.5 whitespace-nowrap ${className}`}>
+  <span
+    class="font-script font-bold leading-none"
+    style="font-size: 1.35em; padding: 0.1em 0.18em 0.1em 0.05em; margin: -0.1em -0.18em -0.1em -0.05em; background: linear-gradient(90deg, #FFB703, #FF6F61, #EC5FA1); -webkit-background-clip: text; background-clip: text; color: transparent;"
+  >i will</span>
+  <span
+    class="font-display font-bold leading-none"
+    style="background: linear-gradient(90deg, #00BFAE, #2D6BFF); -webkit-background-clip: text; background-clip: text; color: transparent;"
+  >drive</span>
+</span>

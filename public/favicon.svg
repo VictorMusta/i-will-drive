@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="16" fill="#FF6F61"/>
+  <text x="32" y="40" font-family="'Baloo 2', 'Comic Sans MS', Arial, sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="#FFFFFF">iw</text>
+  <path d="M16 14 A18 12 0 0 1 48 14" fill="none" stroke="#FFB703" stroke-width="3.5" stroke-linecap="round"/>
+  <g fill="#FFFFFF" opacity="0.9">
+    <rect x="14" y="50" width="8" height="4" rx="2"/>
+    <rect x="28" y="50" width="8" height="4" rx="2"/>
+    <rect x="42" y="50" width="8" height="4" rx="2"/>
+  </g>
+</svg>

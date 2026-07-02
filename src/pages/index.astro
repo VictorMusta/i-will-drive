@@ -1,0 +1,247 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import FormulaCard from "../components/FormulaCard.astro";
+import ReviewCard from "../components/ReviewCard.astro";
+import { SITE, FORMULES, AVIS, FAQ, VALUES } from "../consts";
+---
+
+<Layout>
+  <span id="top"></span>
+  <Header />
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-dark text-on-dark">
+    <div class="hero-road" aria-hidden="true"></div>
+    <div class="container-x relative z-10 py-20 md:py-28">
+      <p class="label" style="color: var(--color-hero-accent)">
+        Auto-école · Dordogne
+      </p>
+
+      <div class="lane-dash my-6 w-[min(380px,70%)]"></div>
+
+      <h1 class="max-w-[14ch] text-5xl font-extrabold leading-[1.02] md:text-7xl">
+        Vous allez <span style="color: var(--color-hero-accent)">conduire.</span>
+      </h1>
+
+      <p class="mt-5 max-w-[46ch] text-lg" style="color: color-mix(in srgb, var(--color-on-dark) 78%, transparent)">
+        {SITE.tagline} Avec un enseignant qui prend le temps, réservation en
+        ligne et suivi de vos heures — tout au même endroit.
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href={SITE.elgeaUrl} target="_blank" rel="noopener" class="btn btn-primary">
+          Réserver une leçon <span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <a href={SITE.elgeaUrl} target="_blank" rel="noopener" class="btn btn-ghost text-on-dark">
+          Mon espace élève
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALEURS -->
+  <section class="border-b border-hairline bg-surface">
+    <div class="container-x flex flex-wrap items-center justify-center gap-x-10 gap-y-3 py-6">
+      {
+        VALUES.map((v) => (
+          <span class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em]" style={`color: ${v.color}`}>
+            <span class="h-2.5 w-2.5 rounded-full" style={`background: ${v.color}`} aria-hidden="true" />
+            {v.label}
+          </span>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- MÉTHODE -->
+  <section id="methode" class="container-x py-20 md:py-28">
+    <p class="label">01 — La méthode</p>
+    <h2 class="mt-2 max-w-[20ch] text-3xl font-extrabold md:text-5xl">
+      Un enseignant, pas une usine à permis.
+    </h2>
+    <p class="mt-4 max-w-[60ch] text-lg text-muted">
+      Le même moniteur du début à la fin, qui prend le temps d'expliquer et
+      s'adapte à votre rythme. Des explications claires, un vrai suivi, et la
+      confiance qui vient dès les premières leçons.
+    </p>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {
+        [
+          { n: "01", t: "On fait connaissance", d: "Point sur votre niveau et vos objectifs, puis on démarre en douceur." },
+          { n: "02", t: "On progresse ensemble", d: "Suivi après chaque séance : vous savez toujours où vous en êtes." },
+          { n: "03", t: "On vise l'examen", d: "Préparation en conditions réelles et gestion du stress le jour J." },
+        ].map((step) => (
+          <div class="rounded-2xl border border-hairline bg-surface p-6">
+            <span class="font-display text-2xl font-extrabold" style="color: var(--color-accent)">
+              {step.n}
+            </span>
+            <h3 class="mt-3 text-xl font-bold">{step.t}</h3>
+            <p class="mt-2 text-muted">{step.d}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- FORMULES -->
+  <section id="formules" class="border-y border-hairline bg-surface py-20 md:py-28">
+    <div class="container-x">
+      <p class="label">02 — Formules</p>
+      <h2 class="mt-2 text-3xl font-extrabold md:text-5xl">Des formules claires</h2>
+      <p class="mt-4 max-w-[60ch] text-lg text-muted">
+        Packs d'heures, prépa examen et support de révision. Réservation et
+        paiement se font en ligne depuis votre espace élève.
+      </p>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {FORMULES.map((formula) => <FormulaCard formula={formula} />)}
+      </div>
+
+      <p class="mt-6 text-sm text-muted">
+        Éligible CPF & permis à 1 € par jour. Les tarifs affichés sont indicatifs
+        et seront confirmés lors de la mise en ligne.
+      </p>
+    </div>
+  </section>
+
+  <!-- AVIS -->
+  <section id="avis" class="container-x py-20 md:py-28">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <p class="label">03 — Avis</p>
+        <h2 class="mt-2 text-3xl font-extrabold md:text-5xl">Ils ont eu leur permis</h2>
+      </div>
+      <a href={SITE.elgeaUrl} target="_blank" rel="noopener" class="btn btn-ghost text-ink">
+        Laisser un avis
+      </a>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {AVIS.map((review) => <ReviewCard review={review} />)}
+    </div>
+  </section>
+
+  <!-- ZONE -->
+  <section id="zone" class="border-y border-hairline bg-surface py-20 md:py-28">
+    <div class="container-x grid gap-8 md:grid-cols-2 md:items-center">
+      <div>
+        <p class="label">04 — Zone d'intervention</p>
+        <h2 class="mt-2 text-3xl font-extrabold md:text-5xl">Près de chez vous</h2>
+        <p class="mt-4 max-w-[52ch] text-lg text-muted">
+          Leçons de conduite en <strong class="text-ink">{SITE.zone}</strong>.
+          Les points de rendez-vous et de récupération vous sont communiqués à la
+          réservation, au plus proche de chez vous.
+        </p>
+      </div>
+      <div
+        class="grid aspect-video place-items-center rounded-2xl border border-hairline text-muted"
+        style="background: color-mix(in srgb, var(--color-accent) 6%, var(--color-surface))"
+      >
+        <span class="label">Carte de la zone — à intégrer</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="container-x py-20 md:py-28">
+    <p class="label">05 — Questions fréquentes</p>
+    <h2 class="mt-2 text-3xl font-extrabold md:text-5xl">Bon à savoir</h2>
+
+    <div class="mx-auto mt-10 flex max-w-3xl flex-col gap-3">
+      {
+        FAQ.map((item) => (
+          <details class="group rounded-xl border border-hairline bg-surface p-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold">
+              {item.q}
+              <span class="text-xl transition-transform group-open:rotate-45" style="color: var(--color-accent)" aria-hidden="true">
+                +
+              </span>
+            </summary>
+            <p class="mt-3 text-muted">{item.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="border-t border-hairline bg-surface py-20 md:py-28">
+    <div class="container-x grid gap-10 md:grid-cols-2">
+      <div>
+        <p class="label">06 — Contact</p>
+        <h2 class="mt-2 text-3xl font-extrabold md:text-5xl">Une question ? Écrivez-nous.</h2>
+        <p class="mt-4 max-w-[46ch] text-lg text-muted">
+          Un projet de permis, une reconversion, une question sur le financement ?
+          Laissez vos coordonnées, on vous rappelle.
+        </p>
+      </div>
+
+      <!-- Formulaire Netlify — aucune base de données, envoi par email -->
+      <form
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="flex flex-col gap-4 rounded-2xl border border-hairline bg-ground p-6"
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hidden">
+          <label>Ne pas remplir : <input name="bot-field" /></label>
+        </p>
+
+        <label class="flex flex-col gap-1.5 text-sm font-semibold">
+          Nom
+          <input
+            type="text"
+            name="nom"
+            required
+            class="rounded-lg border border-hairline bg-surface px-3.5 py-2.5 font-normal outline-none focus:border-accent"
+          />
+        </label>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="flex flex-col gap-1.5 text-sm font-semibold">
+            Téléphone
+            <input
+              type="tel"
+              name="telephone"
+              required
+              class="rounded-lg border border-hairline bg-surface px-3.5 py-2.5 font-normal outline-none focus:border-accent"
+            />
+          </label>
+          <label class="flex flex-col gap-1.5 text-sm font-semibold">
+            Email
+            <input
+              type="email"
+              name="email"
+              class="rounded-lg border border-hairline bg-surface px-3.5 py-2.5 font-normal outline-none focus:border-accent"
+            />
+          </label>
+        </div>
+
+        <label class="flex flex-col gap-1.5 text-sm font-semibold">
+          Votre message
+          <textarea
+            name="message"
+            rows="4"
+            class="rounded-lg border border-hairline bg-surface px-3.5 py-2.5 font-normal outline-none focus:border-accent"
+          ></textarea>
+        </label>
+
+        <button type="submit" class="btn btn-primary">
+          Envoyer <span class="arrow" aria-hidden="true">→</span>
+        </button>
+
+        <p class="text-xs text-muted">
+          Vos coordonnées servent uniquement à vous recontacter et ne sont pas
+          stockées sur le site.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

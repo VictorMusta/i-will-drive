@@ -1,0 +1,47 @@
+---
+import type { Review } from "../consts";
+
+interface Props {
+  review: Review;
+}
+const { review } = Astro.props;
+const initial = review.name.trim().charAt(0).toUpperCase();
+---
+
+<figure class="flex flex-col gap-3 rounded-2xl bg-dark p-6 text-on-dark">
+  {
+    review.badge && (
+      <span
+        class="inline-flex items-center gap-1.5 self-start rounded-full px-2.5 py-1 text-[0.72rem] font-bold"
+        style="background: color-mix(in srgb, var(--color-go) 22%, transparent); color: color-mix(in srgb, var(--color-go) 55%, white)"
+      >
+        <span class="h-2 w-2 rounded-full" style="background: var(--color-go)" />
+        {review.badge}
+      </span>
+    )
+  }
+
+  <div class="text-lg tracking-wide" style="color: var(--color-hero-accent)" aria-label="Note : 5 sur 5">
+    ★★★★★
+  </div>
+
+  <blockquote class="text-[1.05rem] font-medium leading-relaxed">
+    « {review.quote} »
+  </blockquote>
+
+  <figcaption class="mt-1 flex items-center gap-3">
+    <span
+      class="grid h-10 w-10 place-items-center rounded-full font-extrabold"
+      style="background: var(--color-accent); color: var(--color-on-accent)"
+      aria-hidden="true"
+    >
+      {initial}
+    </span>
+    <div>
+      <div class="text-[0.92rem] font-bold">{review.name}</div>
+      <div class="text-[0.76rem]" style="color: color-mix(in srgb, var(--color-on-dark) 55%, transparent)">
+        {review.source}
+      </div>
+    </div>
+  </figcaption>
+</figure>

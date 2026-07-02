@@ -1,0 +1,612 @@
+<title>IWillDrive — Direction artistique</title>
+<style>
+  :root {
+    --asphalt: #16181F;
+    --asphalt-2: #1F232E;
+    --asphalt-3: #2A2F3C;
+    --paper: #F4F5F7;
+    --paper-2: #FFFFFF;
+    --ink: #14161C;
+    --slate: #5A6373;
+    --slate-2: #8A93A3;
+    --hairline: #DCE0E7;
+    --signal: #FF9D2E;
+    --signal-deep: #E8861A;
+    --signal-soft: rgba(255, 157, 46, 0.14);
+    --go: #2FB573;
+
+    --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    --step-mega: clamp(3.2rem, 11vw, 8rem);
+    --step-hero: clamp(2.4rem, 6vw, 4.2rem);
+    --step-h2: clamp(1.6rem, 3.4vw, 2.4rem);
+    --label: 0.72rem;
+
+    --maxw: 1120px;
+    --gap: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  * { box-sizing: border-box; }
+
+  .wrap {
+    font-family: var(--font);
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    transition: background-color .35s ease, color .35s ease;
+  }
+
+  .inner { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1.2rem, 4vw, 2.5rem); }
+
+  .label {
+    font-size: var(--label);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    color: var(--slate-2);
+    display: inline-block;
+  }
+
+  h2.section-title {
+    font-size: var(--step-h2);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    margin: 0.4rem 0 0;
+    line-height: 1.1;
+  }
+
+  p.lead { color: var(--slate); max-width: 60ch; margin: 0.75rem 0 0; }
+
+  section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+
+  /* ---------- switcher ---------- */
+  .switcher {
+    position: sticky; top: 0; z-index: 30;
+    background: var(--paper-2);
+    border-bottom: 1px solid var(--hairline);
+    transition: background-color .35s ease, border-color .35s ease;
+  }
+  .switcher .inner { display: flex; align-items: center; gap: 0.7rem; padding-top: 0.85rem; padding-bottom: 0.85rem; flex-wrap: wrap; }
+  .switcher .tip { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.16em; font-weight: 700; color: var(--slate-2); margin-right: auto; }
+  .pchip {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: var(--font); font-size: 0.84rem; font-weight: 600;
+    padding: 0.48rem 0.85rem; border-radius: 999px; cursor: pointer;
+    border: 1.5px solid var(--hairline); background: transparent; color: var(--ink);
+    transition: border-color .15s ease, transform .15s ease, background-color .15s ease;
+  }
+  .pchip:hover { transform: translateY(-1px); }
+  .pchip:focus-visible { outline: 3px solid var(--signal); outline-offset: 2px; }
+  .pchip .dots { display: inline-flex; }
+  .pchip .dots i { width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-left: -4px; border: 1.5px solid var(--paper-2); }
+  .pchip .dots i:first-child { margin-left: 0; }
+  .pchip[aria-pressed="true"] { border-color: var(--signal); background: var(--signal-soft); }
+
+  /* ---------- lane-line device ---------- */
+  .lane-dash {
+    height: 6px;
+    border-radius: 3px;
+    background: repeating-linear-gradient(90deg,
+      var(--signal) 0 30px, transparent 30px 54px);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    background: var(--asphalt);
+    color: #fff;
+    padding: clamp(4rem, 9vw, 7rem) 0 clamp(3.5rem, 7vw, 5.5rem);
+    overflow: hidden;
+    transition: background-color .35s ease;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    left: 50%; bottom: 0;
+    width: 140%; height: 70%;
+    transform: translateX(-50%);
+    background:
+      linear-gradient(to top, color-mix(in srgb, var(--signal) 12%, transparent), transparent 60%),
+      conic-gradient(from 90deg at 50% 140%, transparent 0 43deg, rgba(255,255,255,0.05) 43deg 44deg, transparent 44deg 46deg, rgba(255,255,255,0.05) 46deg 47deg, transparent 47deg 360deg);
+    pointer-events: none;
+  }
+  .hero .inner { position: relative; z-index: 1; }
+
+  .eyebrow-row { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 2.2rem; }
+  .eyebrow-row .label { color: var(--signal); }
+  .eyebrow-row .rule { flex: 1; height: 1px; background: rgba(255,255,255,0.14); }
+
+  .wordmark {
+    font-size: var(--step-mega);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 0.92;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .wordmark .i { color: var(--signal); }
+
+  .hero-dash { width: min(420px, 80%); margin: 1.6rem 0 1.8rem; }
+
+  .hero-promise {
+    font-size: var(--step-hero);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
+    margin: 0;
+    max-width: 14ch;
+    text-wrap: balance;
+  }
+  .hero-promise .em { color: var(--signal); }
+  .hero-sub { color: #B9C0CC; max-width: 46ch; margin-top: 1.1rem; font-size: 1.05rem; }
+
+  .hero-cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2rem; }
+
+  /* ---------- buttons ---------- */
+  .btn {
+    font-family: var(--font);
+    font-size: 0.98rem;
+    font-weight: 700;
+    border: 0;
+    border-radius: 999px;
+    padding: 0.95rem 1.6rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: transform .15s ease, background-color .15s ease, box-shadow .15s ease;
+  }
+  .btn:focus-visible { outline: 3px solid var(--signal); outline-offset: 2px; }
+  .btn-primary { background: var(--signal); color: var(--on-signal, var(--asphalt)); box-shadow: 0 6px 18px color-mix(in srgb, var(--signal) 32%, transparent); }
+  .btn-primary:hover { background: var(--signal-deep); transform: translateY(-2px); }
+  .btn-primary .arrow { transition: transform .15s ease; }
+  .btn-primary:hover .arrow { transform: translateX(3px); }
+  .btn-ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.28); }
+  .btn-ghost:hover { border-color: #fff; transform: translateY(-2px); }
+  .btn-dark { background: var(--ink); color: #fff; }
+  .btn-dark:hover { background: var(--asphalt-3); transform: translateY(-2px); }
+
+  .head { margin-bottom: clamp(2rem, 4vw, 3rem); }
+
+  /* ---------- logo variants ---------- */
+  .logo-set { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  @media (max-width: 760px) { .logo-set { grid-template-columns: 1fr; } }
+  .logo-tile {
+    border-radius: 16px;
+    padding: 2.4rem 1.5rem;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 1rem; min-height: 190px;
+    border: 1px solid var(--hairline);
+    transition: background-color .35s ease, border-color .35s ease;
+  }
+  .logo-tile.on-dark { background: var(--asphalt); border-color: var(--asphalt-3); }
+  .logo-tile.on-signal { background: var(--signal); border-color: var(--signal-deep); }
+  .logo-tile .tile-label { font-size: var(--label); letter-spacing: .16em; text-transform: uppercase; }
+  .on-dark .tile-label { color: var(--slate-2); }
+  .logo-tile .tile-label.light { color: var(--slate); }
+  .on-signal .tile-label { color: color-mix(in srgb, var(--on-signal, var(--asphalt)) 65%, transparent); }
+
+  .lockup { font-weight: 800; letter-spacing: -0.04em; font-size: 1.7rem; }
+  .lockup .i { color: var(--signal); }
+  .on-signal .lockup, .on-signal .lockup .i { color: var(--on-signal, var(--asphalt)); }
+  .on-light .lockup { color: var(--ink); }
+  .on-light .lockup .i { color: var(--signal-deep); }
+
+  /* monogram mark */
+  .mark {
+    width: 64px; height: 64px; border-radius: 16px;
+    background: var(--signal);
+    display: grid; place-items: center;
+    color: var(--on-signal, var(--asphalt));
+    font-weight: 800; font-size: 1.5rem; letter-spacing: -0.04em;
+    position: relative; overflow: hidden;
+    transition: background-color .35s ease, color .35s ease;
+  }
+  .mark.outline { background: transparent; border: 2px solid var(--signal); color: var(--signal); }
+  .mark::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 10px; height: 4px;
+    background: repeating-linear-gradient(90deg, currentColor 0 8px, transparent 8px 15px);
+    opacity: .85;
+  }
+
+  /* ---------- palette ---------- */
+  .pal-desc { color: var(--slate); max-width: 60ch; margin: 0.75rem 0 0; }
+  .swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.9rem; margin-top: 1.8rem; }
+  @media (max-width: 760px) { .swatches { grid-template-columns: repeat(2, 1fr); } }
+  .swatch { border-radius: 14px; overflow: hidden; border: 1px solid var(--hairline); background: var(--paper-2); }
+  .swatch .chip { height: 92px; }
+  .swatch .meta { padding: 0.7rem 0.8rem 0.9rem; }
+  .swatch .nm { font-weight: 700; font-size: 0.9rem; }
+  .swatch .hex { font-size: 0.78rem; color: var(--slate); font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
+  .swatch .role { font-size: 0.72rem; color: var(--slate-2); margin-top: 0.25rem; }
+
+  /* ---------- type specimen ---------- */
+  .type-card { background: var(--paper-2); border: 1px solid var(--hairline); border-radius: 18px; padding: clamp(1.6rem, 4vw, 2.6rem); }
+  .spec-row { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; padding: 1.1rem 0; border-bottom: 1px dashed var(--hairline); }
+  .spec-row:last-child { border-bottom: 0; }
+  .spec-meta { font-size: var(--label); text-transform: uppercase; letter-spacing: .14em; color: var(--slate-2); min-width: 130px; }
+  .s-display { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+  .s-h { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.01em; }
+  .s-body { font-size: 1.02rem; color: var(--slate); max-width: 54ch; }
+  .s-label { font-size: var(--label); text-transform: uppercase; letter-spacing: 0.18em; font-weight: 700; color: var(--signal-deep); }
+
+  /* ---------- component showcase ---------- */
+  .ui-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); align-items: start; }
+  @media (max-width: 860px) { .ui-grid { grid-template-columns: 1fr; } }
+
+  .formula {
+    background: var(--paper-2); border: 1px solid var(--hairline); border-radius: 18px;
+    padding: 1.6rem; display: flex; flex-direction: column; gap: 1rem;
+    position: relative; overflow: hidden;
+    transition: border-color .35s ease;
+  }
+  .formula.featured { border-color: var(--signal); box-shadow: 0 14px 30px color-mix(in srgb, var(--ink) 8%, transparent); }
+  .formula .tag {
+    align-self: flex-start; background: var(--signal-soft); color: var(--signal-deep);
+    font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em;
+    padding: 0.3rem 0.6rem; border-radius: 999px;
+  }
+  .formula h3 { margin: 0; font-size: 1.25rem; font-weight: 800; letter-spacing: -0.01em; }
+  .price { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.02em; }
+  .price small { font-size: 0.9rem; font-weight: 600; color: var(--slate); }
+  .feat { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.55rem; }
+  .feat li { display: flex; gap: 0.55rem; align-items: flex-start; font-size: 0.95rem; color: var(--ink); }
+  .feat li::before { content: ""; flex: none; width: 18px; height: 18px; border-radius: 50%; margin-top: 2px;
+    background: var(--go); -webkit-mask: no-repeat center / 11px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/%3E%3C/svg%3E");
+    mask: no-repeat center / 11px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/%3E%3C/svg%3E");
+  }
+
+  /* review card */
+  .review { background: var(--asphalt); color: #fff; border-radius: 18px; padding: 1.7rem; display: flex; flex-direction: column; gap: 1rem; transition: background-color .35s ease; }
+  .stars { color: var(--signal); letter-spacing: 2px; font-size: 1.1rem; }
+  .review blockquote { margin: 0; font-size: 1.12rem; line-height: 1.5; font-weight: 500; }
+  .review .who { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.4rem; }
+  .avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--signal); color: var(--on-signal, var(--asphalt)); display: grid; place-items: center; font-weight: 800; }
+  .who .nm { font-weight: 700; font-size: 0.95rem; }
+  .who .src { font-size: 0.78rem; color: var(--slate-2); }
+  .badge-go { display: inline-flex; align-items: center; gap: 0.45rem; align-self: flex-start; background: rgba(47,181,115,0.16); color: #7ee0ad; font-size: 0.74rem; font-weight: 700; padding: 0.3rem 0.65rem; border-radius: 999px; }
+  .badge-go .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--go); }
+
+  /* voice */
+  .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+  @media (max-width: 760px) { .voice-grid { grid-template-columns: 1fr; } }
+  .voice-col { background: var(--paper-2); border: 1px solid var(--hairline); border-radius: 16px; padding: 1.5rem; }
+  .voice-col h3 { margin: 0 0 0.9rem; font-size: 1.05rem; }
+  .voice-col ul { margin: 0; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .voice-col li { font-size: 0.95rem; padding-left: 1.5rem; position: relative; color: var(--slate); }
+  .voice-col.do li::before { content: "→"; position: absolute; left: 0; color: var(--go); font-weight: 800; }
+  .voice-col.dont li::before { content: "✕"; position: absolute; left: 0; color: #D45B5B; font-weight: 800; }
+
+  .taglines { display: flex; flex-direction: column; gap: 0.6rem; }
+  .tagline { display: flex; align-items: center; gap: 0.8rem; padding: 0.9rem 1.1rem; background: var(--paper-2); border: 1px solid var(--hairline); border-radius: 12px; }
+  .tagline.primary { border-color: var(--signal); background: var(--signal-soft); }
+  .tagline .txt { font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em; }
+  .tagline .note { font-size: 0.78rem; color: var(--slate); margin-left: auto; }
+
+  footer.foot { background: var(--asphalt); color: var(--slate-2); padding: 2.5rem 0; font-size: 0.82rem; transition: background-color .35s ease; }
+  footer.foot .inner { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; align-items: center; }
+  footer .lockup { font-size: 1.2rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+
+<div class="wrap" id="wrap">
+
+  <!-- SWITCHER -->
+  <div class="switcher">
+    <div class="inner">
+      <span class="tip">⚡ Cliquez pour changer la palette →</span>
+      <div id="pchips" role="group" aria-label="Choix de palette"></div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="inner">
+      <div class="eyebrow-row">
+        <span class="label">Direction artistique</span>
+        <span class="rule"></span>
+        <span class="label">v0.2 · 2026</span>
+      </div>
+
+      <h1 class="wordmark"><span class="i">I</span>WILLDRIVE</h1>
+      <div class="lane-dash hero-dash"></div>
+
+      <p class="hero-promise">Vous allez <span class="em">conduire.</span></p>
+      <p class="hero-sub">L'auto-école d'un enseignant qu'on n'oublie pas. Présence en ligne, réservation et suivi — tout au même endroit.</p>
+
+      <div class="hero-cta-row">
+        <a class="btn btn-primary" href="#">Réserver une leçon <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="#">Mon espace élève</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- LOGO -->
+  <section>
+    <div class="inner">
+      <div class="head">
+        <span class="label">01 — Logotype</span>
+        <h2 class="section-title">Le wordmark & le monogramme</h2>
+        <p class="lead">Le « I » en accent incarne l'élève (la première personne, celui qui prendra le volant). Le marquage au sol en pointillés signe la marque sans jamais avoir besoin du mot « auto-école ».</p>
+      </div>
+
+      <div class="logo-set">
+        <div class="logo-tile on-dark">
+          <span class="lockup"><span class="i">I</span>WILLDRIVE</span>
+          <div class="lane-dash" style="width:160px;"></div>
+          <span class="tile-label">Principal · sur fond sombre</span>
+        </div>
+        <div class="logo-tile on-light">
+          <span class="lockup"><span class="i">I</span>WILLDRIVE</span>
+          <div class="lane-dash" style="width:160px;"></div>
+          <span class="tile-label light">Sur fond clair</span>
+        </div>
+        <div class="logo-tile on-signal">
+          <span class="lockup">IWILLDRIVE</span>
+          <span class="tile-label">Aplat couleur</span>
+        </div>
+      </div>
+
+      <div class="logo-set" style="margin-top:1rem;">
+        <div class="logo-tile on-dark">
+          <div class="mark">IW</div>
+          <span class="tile-label">Monogramme · favicon / app</span>
+        </div>
+        <div class="logo-tile on-light">
+          <div class="mark outline">IW</div>
+          <span class="tile-label light">Monogramme · contour</span>
+        </div>
+        <div class="logo-tile on-light">
+          <div class="mark">IW</div>
+          <span class="tile-label light">Monogramme · plein</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PALETTE -->
+  <section style="background:var(--paper-2); border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline);">
+    <div class="inner">
+      <div class="head">
+        <span class="label">02 — Couleurs</span>
+        <h2 class="section-title"><span id="palName">Bleu Électrique</span></h2>
+        <p class="pal-desc" id="palDesc"></p>
+      </div>
+
+      <div class="swatches" id="swatches"></div>
+    </div>
+  </section>
+
+  <!-- TYPE -->
+  <section>
+    <div class="inner">
+      <div class="head">
+        <span class="label">03 — Typographie</span>
+        <h2 class="section-title">Une grotesque, travaillée par les contrastes</h2>
+        <p class="lead">Une seule famille sans-serif, mais une échelle franche : titres très gras et serrés pour la confiance, corps aéré pour la pédagogie, labels espacés comme une signalisation.</p>
+      </div>
+
+      <div class="type-card">
+        <div class="spec-row">
+          <span class="spec-meta">Display · 800</span>
+          <span class="s-display">Vous allez conduire.</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-meta">Titre · 700</span>
+          <span class="s-h">Des leçons qui vous mènent au permis</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-meta">Corps · 400</span>
+          <span class="s-body">Un accompagnement clair, à votre rythme, par un enseignant qui prend le temps d'expliquer. Réservation et paiement en ligne, suivi de vos heures et de vos points de récupération.</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-meta">Label · 700</span>
+          <span class="s-label">Formules · Méthode · Zone · Avis</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPONENTS -->
+  <section style="background:var(--paper-2); border-top:1px solid var(--hairline);">
+    <div class="inner">
+      <div class="head">
+        <span class="label">04 — Composants</span>
+        <h2 class="section-title">Les briques du site</h2>
+        <p class="lead">Les composants qui reviendront sur chaque page : le bouton d'action, la carte de formule et la preuve sociale. Prêts à transposer dans le build Astro.</p>
+      </div>
+
+      <div class="ui-grid">
+        <!-- formula -->
+        <div class="formula featured">
+          <span class="tag">Le plus choisi</span>
+          <h3>Pack 20 heures</h3>
+          <div class="price">980&nbsp;€ <small>/ soit 49 €&nbsp;l'heure</small></div>
+          <ul class="feat">
+            <li>20 h de conduite avec le même enseignant</li>
+            <li>Support numérique de révision inclus</li>
+            <li>Suivi des heures &amp; points de récupération</li>
+            <li>Éligible CPF &amp; permis à 1&nbsp;€</li>
+          </ul>
+          <a class="btn btn-primary" href="#" style="justify-content:center;">Réserver ce pack <span class="arrow">→</span></a>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:var(--gap);">
+          <!-- review -->
+          <div class="review">
+            <span class="badge-go"><span class="dot"></span> Permis obtenu du 1er coup</span>
+            <div class="stars" aria-label="5 sur 5">★★★★★</div>
+            <blockquote>« Pédagogue, patient, toujours de bonne humeur. J'avais peur de conduire, il m'a mise en confiance dès la première leçon. »</blockquote>
+            <div class="who">
+              <span class="avatar">L</span>
+              <div>
+                <div class="nm">Léa M.</div>
+                <div class="src">Avis Google · Mai 2026</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- secondary formula -->
+          <div class="formula">
+            <h3>Heures de prépa examen</h3>
+            <div class="price">55&nbsp;€ <small>/ heure</small></div>
+            <ul class="feat">
+              <li>Conditions réelles d'examen</li>
+              <li>Bilan personnalisé après chaque séance</li>
+            </ul>
+            <a class="btn btn-dark" href="#" style="justify-content:center;">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOICE + TAGLINES -->
+  <section>
+    <div class="inner">
+      <div class="head">
+        <span class="label">05 — Voix & accroches</span>
+        <h2 class="section-title">Comment la marque parle</h2>
+      </div>
+
+      <div class="voice-grid" style="margin-bottom:var(--gap);">
+        <div class="voice-col do">
+          <h3>On dit</h3>
+          <ul>
+            <li>Tutoyer la confiance : « Vous allez y arriver. »</li>
+            <li>Concret et rassurant : étapes claires, pas de jargon</li>
+            <li>Mettre l'élève au centre, pas l'administratif</li>
+            <li>Chaleureux, jamais infantilisant</li>
+          </ul>
+        </div>
+        <div class="voice-col dont">
+          <h3>On évite</h3>
+          <ul>
+            <li>Le ton « usine à permis »</li>
+            <li>Les promesses irréalistes (« permis garanti »)</li>
+            <li>Le vocabulaire technique de l'auto-école</li>
+            <li>Les majuscules qui crient</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="taglines">
+        <div class="tagline primary">
+          <span class="txt">Vous allez conduire.</span>
+          <span class="note">Accroche principale · joue sur le nom</span>
+        </div>
+        <div class="tagline">
+          <span class="txt">La route, en confiance.</span>
+          <span class="note">Alternative · sobre</span>
+        </div>
+        <div class="tagline">
+          <span class="txt">Le permis, bien accompagné.</span>
+          <span class="note">Alternative · rassurante</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="inner">
+      <span class="lockup" style="color:#fff;"><span class="i">I</span>WILLDRIVE</span>
+      <span>Planche de marque · iwilldrive.fr · proposition de travail</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  const THEMES = {
+    electrique: {
+      label: "Bleu Électrique",
+      desc: "Bleu électrique sur blanc pur, hero bitume profond. Énergique, net, moderne.",
+      dots: ["#1F4BFF", "#FFFFFF", "#0B1220"],
+      vars: {
+        "--asphalt":"#0B1220","--asphalt-2":"#141B2E","--asphalt-3":"#202A44",
+        "--paper":"#F4F6FB","--paper-2":"#FFFFFF","--ink":"#0B1220","--slate":"#5A6478","--slate-2":"#8B93A8","--hairline":"#E3E7EF",
+        "--signal":"#1F4BFF","--signal-deep":"#1438CC","--signal-soft":"rgba(31,75,255,0.12)","--on-signal":"#FFFFFF","--go":"#2FB573"
+      },
+      swatches: [["Bleu électrique","#1F4BFF","Accent unique, CTA"],["Blanc pur","#FFFFFF","Fond clair des sections"],["Bitume nuit","#0B1220","Fond hero, texte fort"],["Ardoise","#5A6478","Texte secondaire"],["Feu vert","#2FB573","Succès · permis obtenu"]]
+    },
+    nuit: {
+      label: "Nuit Électrique",
+      desc: "Mode sombre intégral : fond presque noir, bleu électrique éclatant, blanc pur pour le texte. Premium et tech.",
+      dots: ["#2D6BFF", "#070A12", "#FFFFFF"],
+      vars: {
+        "--asphalt":"#070A12","--asphalt-2":"#0B1020","--asphalt-3":"#1B2338",
+        "--paper":"#0B0F1A","--paper-2":"#111726","--ink":"#F2F5FB","--slate":"#9AA4BC","--slate-2":"#6E7791","--hairline":"#232B40",
+        "--signal":"#2D6BFF","--signal-deep":"#1F52E0","--signal-soft":"rgba(45,107,255,0.18)","--on-signal":"#FFFFFF","--go":"#33C77E"
+      },
+      swatches: [["Bleu vif","#2D6BFF","Accent unique, CTA"],["Noir nuit","#070A12","Fond hero"],["Surface","#111726","Cartes / fond clair relatif"],["Blanc pur","#F2F5FB","Texte fort"],["Feu vert","#33C77E","Succès · permis obtenu"]]
+    },
+    cobalt: {
+      label: "Cobalt Pur",
+      desc: "Cobalt profond sur énormément de blanc, hero clair. Minimal, premium, façon constructeur auto haut de gamme.",
+      dots: ["#1230C4", "#FFFFFF", "#0A0E1A"],
+      vars: {
+        "--asphalt":"#F4F6FB","--asphalt-2":"#E9EDF7","--asphalt-3":"#D7DEF0",
+        "--paper":"#FFFFFF","--paper-2":"#FFFFFF","--ink":"#0A0E1A","--slate":"#5C6373","--slate-2":"#8B92A3","--hairline":"#E8EBF1",
+        "--signal":"#1230C4","--signal-deep":"#0C2199","--signal-soft":"rgba(18,48,196,0.10)","--on-signal":"#FFFFFF","--go":"#1FA968"
+      },
+      swatches: [["Cobalt","#1230C4","Accent unique, CTA"],["Blanc pur","#FFFFFF","Fond dominant"],["Encre","#0A0E1A","Texte fort"],["Hero clair","#F4F6FB","Fond hero"],["Feu vert","#1FA968","Succès · permis obtenu"]]
+    },
+    azur: {
+      label: "Azur Vif",
+      desc: "Bleu azur lumineux (façon iOS) sur blanc. Plus jeune, frais et accessible — parle à une clientèle d'étudiants.",
+      dots: ["#0A84FF", "#FFFFFF", "#101826"],
+      vars: {
+        "--asphalt":"#101826","--asphalt-2":"#182233","--asphalt-3":"#26344A",
+        "--paper":"#F6F9FF","--paper-2":"#FFFFFF","--ink":"#101826","--slate":"#5E6677","--slate-2":"#8992A3","--hairline":"#E4E8EF",
+        "--signal":"#0A84FF","--signal-deep":"#0768D6","--signal-soft":"rgba(10,132,255,0.12)","--on-signal":"#FFFFFF","--go":"#30C56F"
+      },
+      swatches: [["Azur","#0A84FF","Accent unique, CTA"],["Blanc pur","#FFFFFF","Fond clair des sections"],["Encre nuit","#101826","Fond hero, texte fort"],["Ardoise","#5E6677","Texte secondaire"],["Feu vert","#30C56F","Succès · permis obtenu"]]
+    },
+    bleuAmbre: {
+      label: "Bleu + Ambre",
+      desc: "Bleu électrique en couleur principale, ambre en touche d'énergie sur les détails. Le meilleur des deux directions.",
+      dots: ["#1F4BFF", "#FF9D2E", "#FFFFFF"],
+      vars: {
+        "--asphalt":"#0B1220","--asphalt-2":"#141B2E","--asphalt-3":"#202A44",
+        "--paper":"#F4F6FB","--paper-2":"#FFFFFF","--ink":"#0B1220","--slate":"#5A6478","--slate-2":"#8B93A8","--hairline":"#E3E7EF",
+        "--signal":"#FF9D2E","--signal-deep":"#E8861A","--signal-soft":"rgba(255,157,46,0.14)","--on-signal":"#0B1220","--go":"#2FB573"
+      },
+      swatches: [["Bleu électrique","#1F4BFF","Fond hero, liens"],["Ambre","#FF9D2E","Accent unique, CTA"],["Blanc pur","#FFFFFF","Fond clair des sections"],["Bitume nuit","#0B1220","Texte fort"],["Feu vert","#2FB573","Succès · permis obtenu"]]
+    }
+  };
+
+  const wrap = document.getElementById('wrap');
+  const chipsEl = document.getElementById('pchips');
+  const swatchesEl = document.getElementById('swatches');
+  const palName = document.getElementById('palName');
+  const palDesc = document.getElementById('palDesc');
+
+  function apply(key) {
+    const t = THEMES[key];
+    Object.entries(t.vars).forEach(([k, v]) => wrap.style.setProperty(k, v));
+    palName.textContent = t.label;
+    palDesc.textContent = t.desc;
+    swatchesEl.innerHTML = t.swatches.map(([nm, hx, role]) =>
+      `<div class="swatch"><div class="chip" style="background:${hx}; ${hx.toUpperCase() === '#FFFFFF' ? 'box-shadow:inset 0 0 0 1px var(--hairline);' : ''}"></div><div class="meta"><div class="nm">${nm}</div><div class="hex">${hx}</div><div class="role">${role}</div></div></div>`
+    ).join('');
+    [...chipsEl.children].forEach(c => c.setAttribute('aria-pressed', c.dataset.key === key ? 'true' : 'false'));
+  }
+
+  Object.entries(THEMES).forEach(([key, t]) => {
+    const b = document.createElement('button');
+    b.className = 'pchip'; b.dataset.key = key; b.type = 'button';
+    b.setAttribute('aria-pressed', 'false');
+    b.innerHTML = `<span class="dots">${t.dots.map(d => `<i style="background:${d}"></i>`).join('')}</span>${t.label}`;
+    b.addEventListener('click', () => apply(key));
+    chipsEl.appendChild(b);
+  });
+
+  apply('electrique');
+</script>
