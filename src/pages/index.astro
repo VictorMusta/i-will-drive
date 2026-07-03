@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -6,6 +7,8 @@ import FormulaCard from "../components/FormulaCard.astro";
 import ReviewCard from "../components/ReviewCard.astro";
 import ValueIcon from "../components/ValueIcon.astro";
 import { SITE, FORMULES, AVIS, FAQ, VALUES } from "../consts";
+import logoHorizontal from "../assets/logo-horizontal.jpeg";
+import logoRond from "../assets/logo-rond.jpeg";
 ---
 
 <Layout>
@@ -47,6 +50,21 @@ import { SITE, FORMULES, AVIS, FAQ, VALUES } from "../consts";
           Mon espace élève
         </a>
       </div>
+
+      <!-- Macaron « iwd » — logo officiel (seule évocation autorisée de la voiture) -->
+      <div
+        class="absolute right-[4%] top-1/2 hidden -translate-y-1/2 overflow-hidden rounded-full shadow-2xl md:block md:w-56 lg:w-72"
+        aria-hidden="false"
+      >
+        <Image
+          src={logoRond}
+          alt={`Logo ${SITE.name} — soleil levant et silhouette`}
+          class="w-full scale-[1.14]"
+          widths={[288, 576]}
+          sizes="(min-width: 1024px) 288px, 224px"
+          loading="eager"
+        />
+      </div>
     </div>
   </section>
 
@@ -71,17 +89,29 @@ import { SITE, FORMULES, AVIS, FAQ, VALUES } from "../consts";
 
   <!-- MÉTHODE -->
   <section id="methode" class="container-x py-20 md:py-28">
-    <p class="label">01 — La méthode</p>
-    <h2 class="mt-2 max-w-[24ch] text-3xl font-extrabold md:text-5xl">
-      Bienvenue chez i will drive.
-    </h2>
-    <p class="mt-4 max-w-[62ch] text-lg text-muted">
-      Chez i will drive, nous pensons qu'apprendre à conduire ne se résume pas à
-      obtenir un permis. C'est gagner en confiance, devenir autonome et prendre
-      sa place sur la route. Ici, chacun avance à son rythme, dans un climat de
-      bienveillance et de respect. Bienvenue dans une nouvelle façon
-      d'apprendre à conduire.
-    </p>
+    <div class="grid items-center gap-10 md:grid-cols-[1.1fr_0.9fr]">
+      <div>
+        <p class="label">01 — La méthode</p>
+        <h2 class="mt-2 max-w-[24ch] text-3xl font-extrabold md:text-5xl">
+          Bienvenue chez i will drive.
+        </h2>
+        <p class="mt-4 max-w-[62ch] text-lg text-muted">
+          Chez i will drive, nous pensons qu'apprendre à conduire ne se résume pas à
+          obtenir un permis. C'est gagner en confiance, devenir autonome et prendre
+          sa place sur la route. Ici, chacun avance à son rythme, dans un climat de
+          bienveillance et de respect. Bienvenue dans une nouvelle façon
+          d'apprendre à conduire.
+        </p>
+      </div>
+      <Image
+        src={logoHorizontal}
+        alt={`Logo ${SITE.name} — auto-école`}
+        class="mx-auto w-full max-w-md"
+        style="mix-blend-mode: multiply"
+        widths={[448, 896]}
+        sizes="(min-width: 768px) 448px, 90vw"
+      />
+    </div>
 
     <div class="mt-12 grid gap-6 md:grid-cols-3">
       {
