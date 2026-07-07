@@ -130,11 +130,11 @@
   .btn:hover .arrow { transform: translateX(3px); }
 
   .btn-primary {
-    background: var(--color-accent);
+    background: linear-gradient(90deg, var(--color-accent), var(--color-teal));
     color: var(--color-on-accent);
-    box-shadow: 0 6px 18px color-mix(in srgb, var(--color-accent) 30%, transparent);
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--color-accent) 28%, transparent);
   }
-  .btn-primary:hover { background: var(--color-accent-deep); transform: translateY(-2px); }
+  .btn-primary:hover { filter: brightness(1.07); transform: translateY(-2px); }
 
   .btn-dark {
     background: var(--color-ink);
@@ -149,7 +149,25 @@
   }
   .btn-ghost:hover { border-color: currentColor; transform: translateY(-2px); }
 
+  /* Titre arc-en-ciel de la maquette (corail → safran → vert → turquoise) */
+  .text-rainbow {
+    background: linear-gradient(90deg, #FF6F61 0%, #FF9A3C 25%, #FFB703 45%, #7BC96F 70%, #00BFAE 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Fond « mesh » dégradé de la maquette finale — recréé en CSS (DS1) */
+  .bg-mesh {
+    background:
+      radial-gradient(60% 55% at 90% 6%, color-mix(in srgb, var(--color-teal) 26%, transparent), transparent 62%),
+      radial-gradient(50% 45% at 96% 88%, color-mix(in srgb, #EC5FA1 30%, transparent), transparent 60%),
+      radial-gradient(48% 42% at 2% 96%, color-mix(in srgb, var(--color-sun) 38%, transparent), transparent 58%),
+      linear-gradient(180deg, #FFF9F0 0%, #FFF4E4 100%);
+  }
+
   /* NB : contrainte de marque — aucun symbole automobile (volant, route,
      marquage au sol, compteur…). La voiture n'apparaît que dans la
-     silhouette du logo officiel. */
+     silhouette du logo officiel. Les 4 tirets de marque (BrandDashes)
+     reprennent les couleurs des valeurs — motif de la maquette client. */
 }

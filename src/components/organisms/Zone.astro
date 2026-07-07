@@ -1,0 +1,26 @@
+---
+/*
+  Organism — zone d'intervention (Dordogne, SEO local).
+*/
+import { SITE } from "../../consts";
+---
+
+<section id="zone" class="border-y border-hairline bg-surface py-20 md:py-28">
+  <div class="container-x grid gap-8 md:grid-cols-2 md:items-center">
+    <div>
+      <p class="label">04 — Zone d'intervention</p>
+      <h2 class="mt-2 text-3xl font-extrabold md:text-5xl">Près de chez vous</h2>
+      <p class="mt-4 max-w-[52ch] text-lg text-muted">
+        Leçons de conduite en <strong class="text-ink">{SITE.zone}</strong>.
+        Les points de rendez-vous et de récupération vous sont communiqués à la
+        réservation, au plus proche de chez vous.
+      </p>
+    </div>
+    <div
+      class="grid aspect-video place-items-center rounded-2xl border border-hairline text-muted"
+      style="background: color-mix(in srgb, var(--color-accent) 6%, var(--color-surface))"
+    >
+      <span class="label">Carte de la zone — à intégrer</span>
+    </div>
+  </div>
+</section>

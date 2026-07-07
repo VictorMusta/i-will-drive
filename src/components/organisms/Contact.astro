@@ -1,0 +1,80 @@
+---
+/*
+  Organism — formulaire de contact (Netlify Forms, aucune base de données).
+*/
+import Button from "../atoms/Button.astro";
+---
+
+<section id="contact" class="border-t border-hairline bg-surface py-20 md:py-28">
+  <div class="container-x grid gap-10 md:grid-cols-2">
+    <div>
+      <p class="label">06 — Contact</p>
+      <h2 class="mt-2 text-3xl font-extrabold md:text-5xl">Une question ? Écrivez-nous.</h2>
+      <p class="mt-4 max-w-[46ch] text-lg text-muted">
+        Un projet de permis, une reconversion, une question sur le financement ?
+        Laissez vos coordonnées, on vous rappelle.
+      </p>
+    </div>
+
+    <form
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="flex flex-col gap-4 rounded-2xl border border-hairline bg-ground p-6"
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <p class="hidden">
+        <label>Ne pas remplir : <input name="bot-field" /></label>
+      </p>
+
+      <label class="flex flex-col gap-1.5 text-sm font-semibold">
+        Nom
+        <input
+          type="text"
+          name="nom"
+          required
+          class="rounded-lg border border-hairline bg-surface px-3.5 py-2.5 font-normal outline-none focus:border-accent"
+        />
+      </label>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <label class="flex flex-col gap-1.5 text-sm font-semibold">
+          Téléphone
+          <input
+            type="tel"
+            name="telephone"
+            required
+            class="rounded-lg border border-hairline bg-surface px-3.5 py-2.5 font-normal outline-none focus:border-accent"
+          />
+        </label>
+        <label class="flex flex-col gap-1.5 text-sm font-semibold">
+          Email
+          <input
+            type="email"
+            name="email"
+            class="rounded-lg border border-hairline bg-surface px-3.5 py-2.5 font-normal outline-none focus:border-accent"
+          />
+        </label>
+      </div>
+
+      <label class="flex flex-col gap-1.5 text-sm font-semibold">
+        Votre message
+        <textarea
+          name="message"
+          rows="4"
+          class="rounded-lg border border-hairline bg-surface px-3.5 py-2.5 font-normal outline-none focus:border-accent"
+        ></textarea>
+      </label>
+
+      <Button type="submit">
+        Envoyer <span class="arrow" aria-hidden="true">→</span>
+      </Button>
+
+      <p class="text-xs text-muted">
+        Vos coordonnées servent uniquement à vous recontacter et ne sont pas
+        stockées sur le site.
+      </p>
+    </form>
+  </div>
+</section>

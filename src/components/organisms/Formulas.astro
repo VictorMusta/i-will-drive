@@ -1,0 +1,27 @@
+---
+/*
+  Organism — section formules (packs, unité, prépa examen).
+*/
+import FormulaCard from "../molecules/FormulaCard.astro";
+import { FORMULES } from "../../consts";
+---
+
+<section id="formules" class="border-y border-hairline bg-surface py-20 md:py-28">
+  <div class="container-x">
+    <p class="label">02 — Formules</p>
+    <h2 class="mt-2 text-3xl font-extrabold md:text-5xl">Des formules claires</h2>
+    <p class="mt-4 max-w-[60ch] text-lg text-muted">
+      Packs d'heures, prépa examen et support de révision. Réservation et
+      paiement se font en ligne depuis votre espace élève.
+    </p>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {FORMULES.map((formula) => <FormulaCard formula={formula} />)}
+    </div>
+
+    <p class="mt-6 text-sm text-muted">
+      Éligible CPF & permis à 1 € par jour. Les tarifs affichés sont indicatifs
+      et seront confirmés lors de la mise en ligne.
+    </p>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+---
+/*
+  Organism — section avis élèves + collecte d'avis Google.
+*/
+import Button from "../atoms/Button.astro";
+import ReviewCard from "../molecules/ReviewCard.astro";
+import { SITE, AVIS } from "../../consts";
+---
+
+<section id="avis" class="container-x py-20 md:py-28">
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="label">03 — Avis</p>
+      <h2 class="mt-2 text-3xl font-extrabold md:text-5xl">Ils ont eu leur permis</h2>
+    </div>
+    <Button href={SITE.elgeaUrl} external variant="ghost" class="text-ink">
+      Laisser un avis
+    </Button>
+  </div>
+
+  <div class="mt-12 grid gap-6 md:grid-cols-3">
+    {AVIS.map((review) => <ReviewCard review={review} />)}
+  </div>
+</section>

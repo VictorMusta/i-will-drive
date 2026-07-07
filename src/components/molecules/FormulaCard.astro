@@ -1,6 +1,7 @@
 ---
-import type { Formula } from "../consts";
-import { SITE } from "../consts";
+import type { Formula } from "../../consts";
+import { SITE } from "../../consts";
+import Button from "../atoms/Button.astro";
 
 interface Props {
   formula: Formula;
@@ -53,12 +54,7 @@ const { formula } = Astro.props;
     }
   </ul>
 
-  <a
-    href={SITE.elgeaUrl}
-    target="_blank"
-    rel="noopener"
-    class:list={["btn mt-auto w-full", formula.variant === "primary" ? "btn-primary" : "btn-dark"]}
-  >
+  <Button href={SITE.elgeaUrl} external variant={formula.variant} class="mt-auto w-full">
     {formula.cta} <span class="arrow" aria-hidden="true">→</span>
-  </a>
+  </Button>
 </article>

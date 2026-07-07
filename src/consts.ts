@@ -60,6 +60,36 @@ export const NAV = [
   { label: "Contact", href: "#contact" },
 ];
 
+// Les 4 bénéfices (cartes de la maquette finale, design/maquette_DA finale..jpeg)
+export type FeatureIconName = "calendrier" | "personne" | "euro" | "bouclier";
+
+export const FEATURES: { icon: FeatureIconName; color: string; title: string; desc: string }[] = [
+  {
+    icon: "calendrier",
+    color: "var(--color-teal)",
+    title: "Horaires adaptés",
+    desc: "Cours en journée, soirée et week-end.",
+  },
+  {
+    icon: "personne",
+    color: "var(--color-accent)",
+    title: "Accompagnement sur-mesure",
+    desc: "Un suivi personnalisé à chaque étape.",
+  },
+  {
+    icon: "euro",
+    color: "var(--color-sun)",
+    title: "Tarifs justes et transparents",
+    desc: "Pas de frais cachés, tout est clair.",
+  },
+  {
+    icon: "bouclier",
+    color: "#7C5CBF",
+    title: "Taux de réussite élevé",
+    desc: "Une méthode efficace et reconnue.",
+  },
+];
+
 export type Formula = {
   title: string;
   price: string;

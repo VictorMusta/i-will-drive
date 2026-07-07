@@ -1,0 +1,28 @@
+---
+/*
+  Atom — bouton d'action.
+  variant "primary" : dégradé corail → turquoise (maquette finale).
+  Rend un <a> si href est fourni, sinon un <button>.
+*/
+interface Props {
+  variant?: "primary" | "ghost" | "dark";
+  href?: string;
+  type?: "button" | "submit";
+  external?: boolean;
+  class?: string;
+}
+const { variant = "primary", href, type = "button", external = false, class: className = "" } = Astro.props;
+const classes = `btn btn-${variant} ${className}`;
+---
+
+{
+  href ? (
+    <a href={href} class={classes} target={external ? "_blank" : undefined} rel={external ? "noopener" : undefined}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={classes}>
+      <slot />
+    </button>
+  )
+}

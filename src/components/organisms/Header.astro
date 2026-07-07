@@ -1,6 +1,7 @@
 ---
-import { NAV, SITE } from "../consts";
-import Wordmark from "./Wordmark.astro";
+import { NAV, SITE } from "../../consts";
+import Wordmark from "../atoms/Wordmark.astro";
+import Button from "../atoms/Button.astro";
 ---
 
 <header
@@ -24,13 +25,8 @@ import Wordmark from "./Wordmark.astro";
       }
     </nav>
 
-    <a
-      href={SITE.elgeaUrl}
-      target="_blank"
-      rel="noopener"
-      class="btn btn-primary ml-auto md:ml-0 !px-4 !py-2.5 text-sm"
-    >
-      Réserver <span class="arrow" aria-hidden="true">→</span>
-    </a>
+    <Button href={SITE.elgeaUrl} external class="ml-auto md:ml-0 !px-4 !py-2.5 text-sm">
+      Réserver en ligne <span class="arrow" aria-hidden="true">→</span>
+    </Button>
   </div>
 </header>

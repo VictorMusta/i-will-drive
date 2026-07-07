@@ -1,0 +1,40 @@
+---
+/*
+  Organism — section « La méthode » : manifesto du client, logo horizontal
+  officiel, et les 4 promesses des valeurs.
+*/
+import { Image } from "astro:assets";
+import ValueBadge from "../molecules/ValueBadge.astro";
+import { SITE, VALUES } from "../../consts";
+import logoHorizontal from "../../assets/logo-horizontal.jpeg";
+---
+
+<section id="methode" class="container-x py-20 md:py-28">
+  <div class="grid items-center gap-10 md:grid-cols-[1.1fr_0.9fr]">
+    <div>
+      <p class="label">01 — La méthode</p>
+      <h2 class="mt-2 max-w-[24ch] text-3xl font-extrabold md:text-5xl">
+        Bienvenue chez i will drive.
+      </h2>
+      <p class="mt-4 max-w-[62ch] text-lg text-muted">
+        Chez i will drive, nous pensons qu'apprendre à conduire ne se résume pas à
+        obtenir un permis. C'est gagner en confiance, devenir autonome et prendre
+        sa place sur la route. Ici, chacun avance à son rythme, dans un climat de
+        bienveillance et de respect. Bienvenue dans une nouvelle façon
+        d'apprendre à conduire.
+      </p>
+    </div>
+    <Image
+      src={logoHorizontal}
+      alt={`Logo ${SITE.name} — auto-école`}
+      class="mx-auto w-full max-w-md"
+      style="mix-blend-mode: multiply"
+      widths={[448, 896]}
+      sizes="(min-width: 768px) 448px, 90vw"
+    />
+  </div>
+
+  <div class="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    {VALUES.map((value) => <ValueBadge value={value} />)}
+  </div>
+</section>

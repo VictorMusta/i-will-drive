@@ -1,0 +1,15 @@
+---
+/*
+  Atom — les 4 tirets de marque aux couleurs des valeurs
+  (motif de la maquette client — sans rapport avec un marquage routier).
+*/
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+const colors = ["var(--color-accent)", "var(--color-sun)", "var(--color-teal)", "#7C5CBF"];
+---
+
+<span class={`inline-flex items-center gap-1.5 ${className}`} aria-hidden="true">
+  {colors.map((c) => <span class="h-1.5 w-7 rounded-full" style={`background: ${c}`} />)}
+</span>

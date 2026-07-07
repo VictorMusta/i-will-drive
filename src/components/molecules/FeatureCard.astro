@@ -1,0 +1,25 @@
+---
+/*
+  Molecule — carte bénéfice de la maquette finale : carte blanche,
+  pastille d'icône pastel, titre, petit tiret couleur, description.
+*/
+import FeatureIcon from "../atoms/FeatureIcon.astro";
+import type { FEATURES } from "../../consts";
+
+interface Props {
+  feature: (typeof FEATURES)[number];
+}
+const { feature } = Astro.props;
+---
+
+<article class="flex flex-col gap-3 rounded-2xl border border-hairline bg-surface p-6 shadow-[0_10px_24px_rgba(20,33,61,0.05)]">
+  <span
+    class="grid h-12 w-12 place-items-center rounded-xl"
+    style={`background: color-mix(in srgb, ${feature.color} 13%, white); color: ${feature.color}`}
+  >
+    <FeatureIcon name={feature.icon} />
+  </span>
+  <h3 class="text-lg font-extrabold leading-snug">{feature.title}</h3>
+  <span class="h-1 w-8 rounded-full" style={`background: ${feature.color}`} aria-hidden="true"></span>
+  <p class="text-sm text-muted">{feature.desc}</p>
+</article>
