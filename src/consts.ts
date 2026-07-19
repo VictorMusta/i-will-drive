@@ -18,7 +18,8 @@ export const SITE = {
   // affichent « i-will-drive.fr », à harmoniser côté client
   domain: "iwilldrive.fr",
   url: "https://iwilldrive.fr",
-  email: "ae.denainw@gmail.com",
+  // Redirection IONOS → ae.denainw@gmail.com
+  email: "contact@iwilldrive.fr",
   phone: "07 84 27 01 43",
   city: "Grand-Brassac",
   zone: "Dordogne (24)",

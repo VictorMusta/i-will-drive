@@ -84,7 +84,8 @@ sans données métier ni base de données. Tout l'opérationnel reste dans Elgea
   `i-will-drive.fr` en redirection).
 - Hébergement cible : **VPS IONOS** (accès SSH en attente). Formulaire :
   service tiers type Web3Forms (Netlify Forms abandonné avec Netlify).
-- Contact confirmé : ae.denainw@gmail.com · 07 84 27 01 43.
+- Contact confirmé : **contact@iwilldrive.fr** (redirection IONOS vers
+  ae.denainw@gmail.com) · 07 84 27 01 43.
 - Adresse : **Grand-Brassac, Dordogne (24)** (flyer p.4).
 - Tarifs officiels reçus (maquette p.3) : packs Permis B 1 290 / 1 560 / 1 830 €,
   heure 55 €, pack AAC 1 450 €, supervisée dès 1 390 €, paiement 3-4× sans frais.
