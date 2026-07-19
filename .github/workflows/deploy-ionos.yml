@@ -56,5 +56,5 @@ jobs:
           lftp -u "$SFTP_USER,$SFTP_PASSWORD" -p "$SFTP_PORT" "sftp://$SFTP_HOST" -e "
             set sftp:auto-confirm yes;
             set net:max-retries 2;
-            mirror -R --delete --parallel=4 --verbose dist/ /;
+            mirror -R --delete --parallel=4 --verbose dist/ /public;
             quit"
