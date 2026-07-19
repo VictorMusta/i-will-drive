@@ -14,12 +14,12 @@ export const SITE = {
   tagline: "Apprendre à conduire, avancer avec confiance, choisir sa route.",
   description:
     "i will drive — auto-école nouvelle génération à Grand-Brassac, Dordogne (24). Permis B, conduite accompagnée (AAC) et supervisée. Réservation en ligne, accompagnement humain et sur-mesure.",
-  // Domaine des supports client (maquette + flyer) — vérifié disponible le 2026-07-07
-  domain: "i-will-drive.fr",
-  url: "https://i-will-drive.fr",
-  email: "contact@i-will-drive.fr",
-  // TODO — numéro réel (placeholder identique sur les flyers client)
-  phone: "06 00 00 00 00",
+  // Domaine acheté par le client (IONOS) — NB : les supports print
+  // affichent « i-will-drive.fr », à harmoniser côté client
+  domain: "iwilldrive.fr",
+  url: "https://iwilldrive.fr",
+  email: "ae.denainw@gmail.com",
+  phone: "07 84 27 01 43",
   city: "Grand-Brassac",
   zone: "Dordogne (24)",
   // TODO — URL réelle du portail élève Elgea (réservation + paiement)
