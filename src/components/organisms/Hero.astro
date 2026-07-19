@@ -9,7 +9,7 @@ import Button from "../atoms/Button.astro";
 import BrandDashes from "../atoms/BrandDashes.astro";
 import ValueBadge from "../molecules/ValueBadge.astro";
 import { SITE, VALUES } from "../../consts";
-import iconeSeule from "../../assets/icone-seule.jpeg";
+import logoTransparent from "../../assets/logo-transparent.png";
 ---
 
 <section class="relative overflow-hidden">
@@ -43,14 +43,13 @@ import iconeSeule from "../../assets/icone-seule.jpeg";
       </div>
     </div>
 
-    <!-- Icône seule — logo officiel (seule évocation autorisée de la voiture) -->
+    <!-- Logo officiel détouré (fond transparent), posé sur le mesh -->
     <Image
-      src={iconeSeule}
+      src={logoTransparent}
       alt={`Logo ${SITE.name} — soleil levant et silhouette`}
-      class="mx-auto hidden w-full max-w-sm md:block lg:max-w-md"
-      style="mix-blend-mode: multiply"
-      widths={[416, 832]}
-      sizes="(min-width: 1024px) 448px, 384px"
+      class="mx-auto hidden w-full max-w-md md:block lg:max-w-lg"
+      widths={[512, 1024]}
+      sizes="(min-width: 1024px) 512px, 448px"
       loading="eager"
     />
   </div>
