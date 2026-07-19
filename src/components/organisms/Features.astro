@@ -7,10 +7,7 @@ import FeatureCard from "../molecules/FeatureCard.astro";
 import { FEATURES } from "../../consts";
 ---
 
-<section
-  class="border-b border-hairline"
-  style="background: linear-gradient(180deg, #FFF4E4 0%, var(--color-ground) 70%)"
->
+<section>
   <div class="container-x grid gap-6 py-14 sm:grid-cols-2 lg:grid-cols-4">
     {FEATURES.map((feature) => <FeatureCard feature={feature} />)}
   </div>

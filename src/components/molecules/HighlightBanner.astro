@@ -1,0 +1,31 @@
+---
+/*
+  Molecule — bandeau atout de la maquette p.2
+  (« 100 % numérique, 100 % flexible » / « Accompagnement personnalisé »).
+*/
+import type { HIGHLIGHTS } from "../../consts";
+
+interface Props {
+  highlight: (typeof HIGHLIGHTS)[number];
+}
+const { highlight } = Astro.props;
+---
+
+<div
+  class="flex items-start gap-4 rounded-2xl p-5"
+  style={`background: color-mix(in srgb, ${highlight.color} 9%, white)`}
+>
+  <span
+    class="grid h-11 w-11 flex-none place-items-center rounded-full"
+    style={`background: ${highlight.color}; color: white`}
+    aria-hidden="true"
+  >
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 6L9 17l-5-5" />
+    </svg>
+  </span>
+  <div>
+    <h3 class="font-extrabold">{highlight.title}</h3>
+    <p class="mt-1 text-sm text-muted">{highlight.desc}</p>
+  </div>
+</div>

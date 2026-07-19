@@ -157,13 +157,30 @@
     color: transparent;
   }
 
-  /* Fond « mesh » dégradé de la maquette finale — recréé en CSS (DS1) */
+  /* Fond « mesh » dégradé de la maquette finale — recréé en CSS (DS1),
+     fidèle à l'image de référence client : crème chaud, halo turquoise
+     en haut à droite, rose magenta en bas à droite, orange safran en
+     bas à gauche, vagues crème douces. */
   .bg-mesh {
     background:
-      radial-gradient(60% 55% at 90% 6%, color-mix(in srgb, var(--color-teal) 26%, transparent), transparent 62%),
-      radial-gradient(50% 45% at 96% 88%, color-mix(in srgb, #EC5FA1 30%, transparent), transparent 60%),
-      radial-gradient(48% 42% at 2% 96%, color-mix(in srgb, var(--color-sun) 38%, transparent), transparent 58%),
-      linear-gradient(180deg, #FFF9F0 0%, #FFF4E4 100%);
+      radial-gradient(55% 60% at 94% 2%, color-mix(in srgb, var(--color-teal) 34%, transparent), transparent 60%),
+      radial-gradient(48% 45% at 100% 92%, color-mix(in srgb, #EC5FA1 42%, transparent), transparent 62%),
+      radial-gradient(42% 38% at 0% 100%, color-mix(in srgb, #FF9A3C 48%, transparent), transparent 58%),
+      radial-gradient(70% 55% at 35% 30%, rgba(255, 244, 224, 0.9), transparent 70%),
+      linear-gradient(180deg, #FFF9F0 0%, #FFF3E2 100%);
+  }
+
+  /* Couche de fond fixe : le mesh reste immobile pendant tout le scroll */
+  .bg-mesh-fixed {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    pointer-events: none;
+  }
+
+  /* Voile translucide pour les sections posées sur le mesh fixe */
+  .bg-veil {
+    background: color-mix(in srgb, white 74%, transparent);
   }
 
   /* NB : contrainte de marque — aucun symbole automobile (volant, route,

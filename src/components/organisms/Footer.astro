@@ -1,14 +1,30 @@
 ---
-import { SITE } from "../../consts";
+import { SITE, FOOTER_USPS } from "../../consts";
 import Wordmark from "../atoms/Wordmark.astro";
 ---
 
 <footer class="bg-dark text-on-dark">
+  <!-- Bandeau USP (flyer p.4) -->
+  <div class="border-b" style="border-color: color-mix(in srgb, var(--color-on-dark) 12%, transparent)">
+    <div class="container-x grid gap-4 py-7 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        FOOTER_USPS.map((usp) => (
+          <div class="flex items-center gap-2.5 text-sm font-semibold">
+            <svg class="h-5 w-5 flex-none" viewBox="0 0 24 24" fill="none" stroke="var(--color-teal)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 6L9 17l-5-5" />
+            </svg>
+            {usp}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
   <div class="container-x flex flex-col gap-6 py-12 md:flex-row md:items-start md:justify-between">
     <div class="flex flex-col gap-3">
       <span class="text-lg"><Wordmark /></span>
       <p class="max-w-xs text-sm" style="color: color-mix(in srgb, var(--color-on-dark) 60%, transparent)">
-        Auto-école indépendante. {SITE.tagline}
+        {SITE.baseline} {SITE.tagline}
       </p>
     </div>
 
@@ -16,14 +32,26 @@ import Wordmark from "../atoms/Wordmark.astro";
       <span class="label" style="color: color-mix(in srgb, var(--color-on-dark) 45%, transparent)">Contact</span>
       <a href={`tel:${SITE.phone.replace(/\s/g, "")}`} class="hover:underline">{SITE.phone}</a>
       <a href={`mailto:${SITE.email}`} class="hover:underline">{SITE.email}</a>
-      <span style="color: color-mix(in srgb, var(--color-on-dark) 60%, transparent)">{SITE.zone}</span>
+      <span style="color: color-mix(in srgb, var(--color-on-dark) 60%, transparent)">
+        {SITE.city} · {SITE.zone}
+      </span>
     </div>
 
     <div class="flex flex-col gap-2 text-sm">
       <span class="label" style="color: color-mix(in srgb, var(--color-on-dark) 45%, transparent)">Liens</span>
       <a href={SITE.elgeaUrl} target="_blank" rel="noopener" class="hover:underline">Mon espace élève</a>
-      <a href="#formules" class="hover:underline">Formules</a>
+      <a href="#formations" class="hover:underline">Formations & tarifs</a>
+      <a href="#inscription" class="hover:underline">S'inscrire</a>
       <a href="#avis" class="hover:underline">Avis</a>
+    </div>
+
+    <div class="flex flex-col gap-2 text-sm">
+      <span class="label" style="color: color-mix(in srgb, var(--color-on-dark) 45%, transparent)">Suivez-nous</span>
+      {
+        SITE.socials.map((s) => (
+          <a href={s.href} class="hover:underline">{s.label}</a>
+        ))
+      }
     </div>
   </div>
 

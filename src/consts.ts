@@ -1,7 +1,8 @@
 /* ============================================================
-   IWillDrive — configuration de contenu
+   i will drive — configuration de contenu
    Toute la donnée éditable du site est ici (aucune base de données).
-   Les valeurs marquées TODO sont à confirmer avec le client / Elgea.
+   Sources : maquette 4 pages + flyer « Pièces d'inscription »
+   (design/, fournis par le client). Les TODO restent à confirmer.
    ============================================================ */
 
 // Palette active : "solaire" (DA officielle client) ou "electrique" (ancienne piste)
@@ -9,58 +10,85 @@ export const THEME: "solaire" | "electrique" = "solaire";
 
 export const SITE = {
   name: "i will drive",
+  baseline: "L'auto-école nouvelle génération.",
   tagline: "Apprendre à conduire, avancer avec confiance, choisir sa route.",
   description:
-    "Auto-école indépendante en Dordogne — leçons de conduite avec un enseignant pédagogue. Réservation en ligne, suivi de vos heures et préparation à l'examen.",
-  domain: "iwilldrive.fr",
-  url: "https://iwilldrive.fr",
-  // TODO — confirmer avec le client
-  email: "contact@iwilldrive.fr",
+    "i will drive — auto-école nouvelle génération à Grand-Brassac, Dordogne (24). Permis B, conduite accompagnée (AAC) et supervisée. Réservation en ligne, accompagnement humain et sur-mesure.",
+  // Domaine des supports client (maquette + flyer) — vérifié disponible le 2026-07-07
+  domain: "i-will-drive.fr",
+  url: "https://i-will-drive.fr",
+  email: "contact@i-will-drive.fr",
+  // TODO — numéro réel (placeholder identique sur les flyers client)
   phone: "06 00 00 00 00",
-  zone: "Dordogne",
+  city: "Grand-Brassac",
+  zone: "Dordogne (24)",
   // TODO — URL réelle du portail élève Elgea (réservation + paiement)
   elgeaUrl: "https://www.elgeaweb.fr",
+  // TODO — vrais comptes réseaux sociaux (annoncés sur le flyer)
+  socials: [
+    { label: "Instagram", href: "#" },
+    { label: "Facebook", href: "#" },
+    { label: "TikTok", href: "#" },
+  ],
 };
 
-// Les 4 valeurs de la marque + leurs promesses (planche client, design/DA_2.jpeg)
+export const NAV = [
+  { label: "Méthode", href: "#methode" },
+  { label: "Formations", href: "#formations" },
+  { label: "Inscription", href: "#inscription" },
+  { label: "Avis", href: "#avis" },
+  { label: "Contact", href: "#contact" },
+];
+
+// « Pourquoi choisir i will drive ? » (maquette p.2)
+export const WHY_INTRO =
+  "i will drive, c'est bien plus qu'une auto-école. C'est un accompagnement humain, moderne et sur-mesure pour vous aider à atteindre votre objectif : la liberté de conduire.";
+
+// Les 4 valeurs et leurs textes officiels (maquette p.2)
 export type ValueIconName = "coeur" | "personnes" | "soleil" | "papillon";
 
 export const VALUES: { label: string; desc: string; color: string; icon: ValueIconName }[] = [
   {
     label: "Confiance",
-    desc: "Apprendre sereinement, dans un climat de confiance et de bienveillance.",
+    desc: "Une relation basée sur l'écoute, la bienveillance et la transparence.",
     color: "var(--color-accent)",
     icon: "coeur",
   },
   {
     label: "Respect",
-    desc: "Prendre confiance en soi : à chaque étape, vous progressez.",
+    desc: "Chaque élève est unique. Nous respectons votre rythme, vos besoins et vos objectifs.",
     color: "var(--color-teal)",
     icon: "personnes",
   },
   {
     label: "Autonomie",
-    desc: "À son rythme, sans jugement — chacun son tempo, chacun son chemin.",
+    desc: "Nous vous donnons toutes les clés pour devenir un(e) conducteur(trice) sûr(e) et responsable.",
     color: "var(--color-sun)",
     icon: "soleil",
   },
   {
     label: "Liberté",
-    desc: "Libre de choisir sa route : vous êtes acteur de votre avenir.",
+    desc: "Apprendre à conduire, c'est gagner en liberté et en confiance pour construire votre avenir.",
     color: "#7C5CBF",
     icon: "papillon",
   },
 ];
 
-export const NAV = [
-  { label: "Méthode", href: "#methode" },
-  { label: "Formules", href: "#formules" },
-  { label: "Zone", href: "#zone" },
-  { label: "Avis", href: "#avis" },
-  { label: "Contact", href: "#contact" },
+// Les 2 bandeaux « atouts » (maquette p.2)
+export const HIGHLIGHTS = [
+  {
+    title: "100 % numérique, 100 % flexible",
+    desc: "Réservez vos leçons en ligne 7j/7 et 24h/24. Suivez votre progression en temps réel depuis votre espace personnel.",
+    color: "var(--color-teal)",
+  },
+  {
+    title: "Accompagnement personnalisé",
+    desc: "Un suivi sur-mesure à chaque étape de votre formation.",
+    color: "var(--color-accent)",
+  },
 ];
 
-// Les 4 bénéfices (cartes de la maquette finale, design/maquette_DA finale..jpeg)
+// Les 4 bénéfices (cartes de la maquette web)
 export type FeatureIconName = "calendrier" | "personne" | "euro" | "bouclier";
 
 export const FEATURES: { icon: FeatureIconName; color: string; title: string; desc: string }[] = [
@@ -90,59 +118,119 @@ export const FEATURES: { icon: FeatureIconName; color: string; title: string; de
   },
 ];
 
-export type Formula = {
-  title: string;
-  price: string;
-  unit: string;
-  features: string[];
-  tag?: string;
-  featured?: boolean;
-  cta: string;
-  variant: "primary" | "dark";
-};
+// USP du bandeau de bas de page (flyer p.4)
+export const FOOTER_USPS = [
+  "Horaires adaptés à votre quotidien",
+  "Enseignant diplômé et expérimenté",
+  "Véhicules récents et sécurisés",
+  "Méthode efficace et bienveillante",
+];
 
-// TODO — tarifs et contenus exacts à valider avec le client
-export const FORMULES: Formula[] = [
+/* ---------- Formations & tarifs (maquette p.3 — tarifs officiels client) ---------- */
+
+// Les formations proposées
+export const FORMATIONS = [
   {
-    title: "Pack 20 heures",
-    price: "980 €",
-    unit: "soit 49 € l'heure",
-    tag: "Le plus choisi",
-    featured: true,
-    features: [
-      "20 h de conduite avec le même enseignant",
-      "Support numérique de révision inclus",
-      "Suivi des heures & points de récupération",
-      "Éligible CPF & permis à 1 €",
-    ],
-    cta: "Réserver ce pack",
-    variant: "primary",
+    title: "Permis B",
+    desc: "La formation traditionnelle pour devenir un conducteur confiant et responsable.",
+    color: "var(--color-teal)",
   },
   {
-    title: "Heures à l'unité",
-    price: "52 €",
-    unit: "par heure de conduite",
-    features: [
-      "Sans engagement",
-      "Idéal pour un complément de formation",
-      "Suivi pédagogique après chaque séance",
-    ],
-    cta: "Réserver une heure",
-    variant: "dark",
+    title: "Conduite accompagnée (AAC)",
+    desc: "Apprenez à votre rythme et gagnez en expérience avec vos proches.",
+    color: "var(--color-accent)",
   },
   {
-    title: "Prépa examen",
-    price: "55 €",
-    unit: "par heure",
-    features: [
-      "Conditions réelles d'examen",
-      "Bilan personnalisé après chaque séance",
-      "Gestion du stress le jour J",
-    ],
-    cta: "Préparer mon examen",
-    variant: "dark",
+    title: "Conduite supervisée",
+    desc: "Plus de flexibilité pour vous entraîner avec un accompagnateur de votre choix.",
+    color: "#7C5CBF",
+  },
+  {
+    title: "Code numérique Rousseau",
+    desc: "Préparez votre code en ligne avec la référence n°1.",
+    color: "var(--color-sun)",
   },
 ];
+
+// Tableau « Pack Permis B tout compris »
+export const PACKS = {
+  columns: [
+    { name: "Pack Essentiel", color: "var(--color-teal)" },
+    { name: "Pack Progression", color: "var(--color-accent)" },
+    { name: "Pack Réussite", color: "#7C5CBF" },
+  ],
+  rows: [
+    { label: "Frais d'inscription", values: ["80 €", "80 €", "80 €"] },
+    { label: "Code numérique Rousseau (6 mois)", values: ["49 €", "49 €", "49 €"] },
+    { label: "Évaluation de départ", values: ["55 €", "55 €", "55 €"] },
+    { label: "Heures de conduite", values: ["20 h", "25 h", "30 h"] },
+    { label: "Accompagnement à l'examen pratique", values: ["✓", "✓", "✓"] },
+  ],
+  totals: ["1 290 €", "1 560 €", "1 830 €"],
+  paymentNote: "Paiement en 3 ou 4 fois sans frais.",
+};
+
+// Prestations à l'unité
+export const UNIT_PRICES = [
+  { label: "1 heure de conduite", price: "55 €" },
+  { label: "Heure supplémentaire", price: "55 €" },
+  { label: "Accompagnement examen pratique", price: "60 €" },
+  { label: "Rendez-vous préalable", price: "50 €" },
+];
+
+// Autres formations
+export const OTHER_FORMATIONS = [
+  { label: "Pack AAC (20 h + 2 RDV)", price: "1 450 €" },
+  { label: "Conduite supervisée", price: "à partir de 1 390 €", note: "selon le nombre d'heures" },
+];
+
+/* ---------- Pièces d'inscription (flyer « Permis Classique (B) ») ---------- */
+
+export type DocIconName = "identite" | "domicile" | "photo" | "assr" | "jdc" | "reglement";
+
+export const INSCRIPTION_DOCS: { icon: DocIconName; color: string; title: string; desc: string }[] = [
+  {
+    icon: "identite",
+    color: "var(--color-accent)",
+    title: "Pièce d'identité",
+    desc: "Carte nationale d'identité ou passeport en cours de validité (recto/verso).",
+  },
+  {
+    icon: "domicile",
+    color: "var(--color-teal)",
+    title: "Justificatif de domicile",
+    desc: "De moins de 6 mois (facture d'électricité, de gaz, d'eau, de téléphone, assurance habitation, avis d'imposition…).",
+  },
+  {
+    icon: "photo",
+    color: "var(--color-sun)",
+    title: "E-photo d'identité",
+    desc: "Photo d'identité agréée ANTS (avec code e-photo).",
+  },
+  {
+    icon: "assr",
+    color: "#7C5CBF",
+    title: "ASSR 2",
+    desc: "Attestation Scolaire de Sécurité Routière de 2ᵈ niveau ou ASR, si né(e) après le 31 décembre 1987.",
+  },
+  {
+    icon: "jdc",
+    color: "var(--color-teal)",
+    title: "Justificatif JDC",
+    desc: "Justificatif de Journée Défense et Citoyenneté, pour les 17-25 ans révolus.",
+  },
+  {
+    icon: "reglement",
+    color: "var(--color-sun)",
+    title: "Mode de règlement",
+    desc: "Selon la formule choisie (paiement en plusieurs fois possible, nous consulter).",
+  },
+];
+
+export const INSCRIPTION_NOTE =
+  "Dossier complet indispensable pour valider votre inscription et débuter votre formation.";
+
+/* ---------- Avis & FAQ ---------- */
 
 export type Review = {
   quote: string;
@@ -179,19 +267,23 @@ export type Faq = { q: string; a: string };
 
 export const FAQ: Faq[] = [
   {
-    q: "Comment réserver une leçon ?",
-    a: "Depuis votre espace élève en ligne, accessible 24h/24. Vous y voyez les créneaux disponibles, vos heures restantes et les points de récupération.",
+    q: "Comment réserver une leçon ?",
+    a: "Depuis votre espace élève en ligne, accessible 7j/7 et 24h/24. Vous y voyez les créneaux disponibles, vos heures restantes et votre progression en temps réel.",
   },
   {
-    q: "Puis-je financer ma formation avec le CPF ?",
-    a: "Oui. Les formules sont éligibles au CPF et au permis à 1 € par jour. On vous accompagne dans les démarches.",
+    q: "Quels documents faut-il pour s'inscrire ?",
+    a: "Pièce d'identité, justificatif de domicile de moins de 6 mois, e-photo agréée ANTS, ASSR 2 (ou ASR), justificatif JDC pour les 17-25 ans, et votre mode de règlement. Le détail complet est dans la section Inscription.",
   },
   {
-    q: "Comment se passe une première leçon ?",
-    a: "On fait le point sur votre niveau et vos objectifs, puis on démarre en douceur. Aucune pression : chacun avance à son rythme.",
+    q: "Peut-on payer en plusieurs fois ?",
+    a: "Oui — paiement en 3 ou 4 fois sans frais sur les packs. Consultez-nous pour les autres modalités.",
   },
   {
-    q: "Où se déroulent les cours ?",
-    a: "Les points de rendez-vous et de récupération sont communiqués à la réservation, au plus proche de chez vous dans la zone couverte.",
+    q: "Comment se passe une première leçon ?",
+    a: "On fait le point sur votre niveau et vos objectifs avec l'évaluation de départ, puis on démarre en douceur. Aucune pression : chacun avance à son rythme.",
+  },
+  {
+    q: "Où se déroulent les cours ?",
+    a: "En Dordogne, autour de Grand-Brassac. Les points de rendez-vous et de récupération sont communiqués à la réservation, au plus proche de chez vous.",
   },
 ];

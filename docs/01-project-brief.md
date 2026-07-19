@@ -78,8 +78,14 @@ sans données métier ni base de données. Tout l'opérationnel reste dans Elgea
 ## 9. Domaine & marque
 
 - Nom retenu : **i will drive** (minuscules, préféré à WillDrive).
-- Domaine : **iwilldrive.fr** — vérifié **disponible** (le `.com` est pris/parké, abandonné).
-  Le mockup client mentionne `iwilldrive-autoecole.fr` → à trancher avec lui.
+- Domaine : **i-will-drive.fr** — utilisé partout sur les supports client
+  (maquette 4 pages + flyer inscription, 2026-07-07), vérifié **disponible**.
+  Alternatives vérifiées disponibles aussi : `iwilldrive.fr`.
+  (`iwilldrive.com` pris/parké ; `iwilldrive-autoecole.fr` abandonné.)
+  → **réserver `i-will-drive.fr` en priorité**, idéalement + `iwilldrive.fr` en redirection.
+- Adresse : **Grand-Brassac, Dordogne (24)** (flyer p.4).
+- Tarifs officiels reçus (maquette p.3) : packs Permis B 1 290 / 1 560 / 1 830 €,
+  heure 55 €, pack AAC 1 450 €, supervisée dès 1 390 €, paiement 3-4× sans frais.
 
 ## 10. Direction artistique (réfs client — 2026-07-02)
 
