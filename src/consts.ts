@@ -37,6 +37,7 @@ export const NAV = [
   { label: "Méthode", href: "#methode" },
   { label: "Formations", href: "#formations" },
   { label: "Inscription", href: "#inscription" },
+  { label: "Rendez-vous", href: "#rendezvous" },
   { label: "Avis", href: "#avis" },
   { label: "Contact", href: "#contact" },
 ];
@@ -230,6 +231,21 @@ export const INSCRIPTION_DOCS: { icon: DocIconName; color: string; title: string
 
 export const INSCRIPTION_NOTE =
   "Dossier complet indispensable pour valider votre inscription et débuter votre formation.";
+
+/* ---------- Rendez-vous en ligne (module de Will, adapté) ---------- */
+
+// Créneaux proposés (repris du module V2 de Will)
+export const RDV_SLOTS = ["08:00", "09:15", "10:30", "13:30", "14:45", "16:00", "17:15"];
+
+// Types de rendez-vous et durée en minutes (pour le fichier calendrier .ics)
+export const RDV_TYPES = [
+  { label: "Leçon de conduite — 1 h", minutes: 60 },
+  { label: "Évaluation de départ — 1 h", minutes: 60 },
+  { label: "Rendez-vous d'inscription — 30 min", minutes: 30 },
+  { label: "Rendez-vous pédagogique AAC — 2 h", minutes: 120 },
+];
+
+export const RDV_LOCATIONS = ["Grand-Brassac", "À définir avec l'auto-école"];
 
 /* ---------- Avis & FAQ ---------- */
 

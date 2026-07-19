@@ -1,0 +1,152 @@
+---
+/*
+  Organism — prise de rendez-vous en ligne (module V2 de Will, adapté).
+  Le formulaire envoie la demande à /api/rdv.php (PHP sur le webspace
+  IONOS) qui l'envoie par email avec une invitation calendrier .ics
+  (Google Agenda, Outlook, Apple) à l'auto-école et à l'élève.
+  NB : fonctionne en production (iwilldrive.fr) — pas sur la démo
+  GitHub Pages (pas de PHP).
+*/
+import Button from "../atoms/Button.astro";
+import { RDV_SLOTS, RDV_TYPES, RDV_LOCATIONS } from "../../consts";
+
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const endpoint = `${base}api/rdv.php`;
+---
+
+<section id="rendezvous" class="bg-veil border-y border-hairline py-20 md:py-28">
+  <div class="container-x">
+    <p class="label">04 — Rendez-vous</p>
+    <h2 class="mt-2 max-w-[22ch] text-3xl font-extrabold md:text-5xl">
+      Choisissez votre date et votre heure
+    </h2>
+    <p class="mt-4 max-w-[60ch] text-lg text-muted">
+      Sélectionnez un créneau pour une leçon, une évaluation ou un rendez-vous
+      d'inscription. Vous recevez une invitation calendrier par email, et
+      l'enseignant vous confirme le créneau.
+    </p>
+
+    <form
+      id="rdv-form"
+      data-endpoint={endpoint}
+      class="mt-10 flex max-w-2xl flex-col gap-4 rounded-2xl border border-hairline bg-surface p-6"
+    >
+      <p class="hidden" aria-hidden="true">
+        <label>Ne pas remplir : <input name="website" tabindex="-1" autocomplete="off" /></label>
+      </p>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <label class="flex flex-col gap-1.5 text-sm font-semibold">
+          Prénom
+          <input type="text" name="firstname" required class="rounded-lg border border-hairline bg-ground px-3.5 py-2.5 font-normal outline-none focus:border-accent" />
+        </label>
+        <label class="flex flex-col gap-1.5 text-sm font-semibold">
+          Nom
+          <input type="text" name="lastname" required class="rounded-lg border border-hairline bg-ground px-3.5 py-2.5 font-normal outline-none focus:border-accent" />
+        </label>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <label class="flex flex-col gap-1.5 text-sm font-semibold">
+          Email
+          <input type="email" name="email" required class="rounded-lg border border-hairline bg-ground px-3.5 py-2.5 font-normal outline-none focus:border-accent" />
+        </label>
+        <label class="flex flex-col gap-1.5 text-sm font-semibold">
+          Téléphone
+          <input type="tel" name="phone" required class="rounded-lg border border-hairline bg-ground px-3.5 py-2.5 font-normal outline-none focus:border-accent" />
+        </label>
+      </div>
+
+      <label class="flex flex-col gap-1.5 text-sm font-semibold">
+        Type de rendez-vous
+        <select name="service" required class="rounded-lg border border-hairline bg-ground px-3.5 py-2.5 font-normal outline-none focus:border-accent">
+          <option value="">Sélectionner</option>
+          {RDV_TYPES.map((t) => <option value={t.label}>{t.label}</option>)}
+        </select>
+      </label>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <label class="flex flex-col gap-1.5 text-sm font-semibold">
+          Date
+          <input type="date" name="date" id="rdv-date" required class="rounded-lg border border-hairline bg-ground px-3.5 py-2.5 font-normal outline-none focus:border-accent" />
+        </label>
+        <label class="flex flex-col gap-1.5 text-sm font-semibold">
+          Heure
+          <select name="time" required class="rounded-lg border border-hairline bg-ground px-3.5 py-2.5 font-normal outline-none focus:border-accent">
+            <option value="">Choisir une heure</option>
+            {RDV_SLOTS.map((s) => <option value={s}>{s}</option>)}
+          </select>
+        </label>
+      </div>
+
+      <label class="flex flex-col gap-1.5 text-sm font-semibold">
+        Point de rendez-vous
+        <select name="location" class="rounded-lg border border-hairline bg-ground px-3.5 py-2.5 font-normal outline-none focus:border-accent">
+          {RDV_LOCATIONS.map((l) => <option value={l}>{l}</option>)}
+        </select>
+      </label>
+
+      <label class="flex flex-col gap-1.5 text-sm font-semibold">
+        Message (facultatif)
+        <textarea name="message" rows="3" placeholder="Précisez votre besoin…" class="rounded-lg border border-hairline bg-ground px-3.5 py-2.5 font-normal outline-none focus:border-accent"></textarea>
+      </label>
+
+      <Button type="submit">
+        Confirmer la demande <span class="arrow" aria-hidden="true">→</span>
+      </Button>
+
+      <p id="rdv-status" class="hidden rounded-lg p-3 text-sm font-semibold" role="status"></p>
+
+      <p class="text-xs text-muted">
+        Votre demande est transmise à l'enseignant, qui vous confirme le
+        créneau. L'invitation calendrier reçue par email s'ajoute en un clic à
+        Google Agenda, Outlook ou Apple Calendar.
+      </p>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("rdv-form") as HTMLFormElement;
+  const dateInput = document.getElementById("rdv-date") as HTMLInputElement;
+  const status = document.getElementById("rdv-status") as HTMLParagraphElement;
+
+  // Réservation à partir de demain (règle du module de Will)
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  dateInput.min = tomorrow.toISOString().split("T")[0];
+
+  function show(message: string, ok: boolean) {
+    status.textContent = message;
+    status.classList.remove("hidden");
+    status.style.background = ok ? "color-mix(in srgb, #00BFAE 12%, white)" : "color-mix(in srgb, #FF6F61 12%, white)";
+    status.style.color = ok ? "#00796B" : "#C0392B";
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const button = form.querySelector("button[type=submit]") as HTMLButtonElement;
+    button.disabled = true;
+    button.style.opacity = "0.6";
+    try {
+      const res = await fetch(form.dataset.endpoint!, {
+        method: "POST",
+        body: new FormData(form),
+      });
+      const json = await res.json().catch(() => null);
+      if (res.ok && json?.ok) {
+        show("Demande envoyée ! Vérifiez votre boîte mail : l'invitation calendrier s'y trouve. L'enseignant vous confirme le créneau rapidement.", true);
+        form.reset();
+      } else {
+        show(json?.error || "L'envoi a échoué. Réessayez, ou contactez-nous par téléphone ou email.", false);
+      }
+    } catch {
+      show("Service momentanément indisponible. Contactez-nous par téléphone ou email.", false);
+    } finally {
+      button.disabled = false;
+      button.style.opacity = "";
+    }
+  });
+</script>
