@@ -1,15 +1,23 @@
 ---
+import { Image } from "astro:assets";
 import { NAV, SITE } from "../../consts";
-import Wordmark from "../atoms/Wordmark.astro";
 import Button from "../atoms/Button.astro";
+import logoTransparent from "../../assets/logo-transparent.png";
 ---
 
 <header
   class="sticky top-0 z-40 border-b border-hairline bg-ground/90 backdrop-blur-md"
 >
-  <div class="container-x flex items-center gap-4 py-3">
-    <a href="#top" class="text-xl text-ink" aria-label={`${SITE.name} — accueil`}>
-      <Wordmark />
+  <div class="container-x flex items-center gap-4 py-2.5">
+    <a href="#top" class="flex-none" aria-label={`${SITE.name} — accueil`}>
+      <Image
+        src={logoTransparent}
+        alt={`Logo ${SITE.name}`}
+        class="h-12 w-auto md:h-14"
+        widths={[128, 256]}
+        sizes="120px"
+        loading="eager"
+      />
     </a>
 
     <nav class="ml-auto hidden items-center gap-7 md:flex" aria-label="Navigation principale">
