@@ -1,0 +1,12 @@
+PAGE « SITE EN CONSTRUCTION » — I WILL DRIVE
+
+Ce dossier est prêt à être mis en ligne.
+
+Contenu :
+- index.html : la page à ouvrir ou à téléverser sur l’hébergement ;
+- styles.css : toute la mise en forme responsive ;
+- assets/ : l’illustration de la voiture auto-école.
+
+Pour vérifier la page sur votre ordinateur, ouvrez simplement index.html dans
+votre navigateur. Pour la publier, déposez les trois éléments ci-dessus à la
+racine de votre hébergement en conservant l’organisation du dossier.

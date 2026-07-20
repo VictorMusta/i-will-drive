@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fffaf3" />
+    <meta
+      name="description"
+      content="Le nouveau site de l’auto-école I Will Drive en Dordogne arrive très prochainement."
+    />
+    <title>I Will Drive — Site en construction</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="construction-page">
+      <div class="ambient ambient-one" aria-hidden="true"></div>
+      <div class="ambient ambient-two" aria-hidden="true"></div>
+
+      <header class="site-header" aria-label="I Will Drive">
+        <a class="brand" href="#accueil" aria-label="I Will Drive, accueil">
+          <span class="brand-mark" aria-hidden="true"><span></span></span>
+          <span class="brand-copy">
+            <strong>I WILL DRIVE</strong>
+            <small>AUTO-ÉCOLE NOUVELLE GÉNÉRATION</small>
+          </span>
+        </a>
+
+        <span class="header-status">
+          <span aria-hidden="true"></span>
+          Site en préparation
+        </span>
+      </header>
+
+      <section class="hero" id="accueil">
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span class="spark" aria-hidden="true">✦</span>
+            Un nouveau départ se prépare
+          </div>
+
+          <h1>
+            On change une roue…
+            <span>et le site arrive&nbsp;!</span>
+          </h1>
+
+          <p class="intro">
+            I Will Drive prépare une façon plus humaine, plus moderne et plus
+            sereine d’apprendre à conduire en Dordogne.
+          </p>
+
+          <div class="launch-note" role="status">
+            <span class="launch-icon" aria-hidden="true">↗</span>
+            <span>
+              <strong>Mise en ligne très prochainement</strong>
+              <small>Un dernier tour de clé et nous serons prêts.</small>
+            </span>
+          </div>
+        </div>
+
+        <div
+          class="illustration-wrap"
+          aria-label="Un petit mécanicien change la roue d’une voiture auto-école I Will Drive"
+        >
+          <div class="illustration-card">
+            <div class="tool-bubble tool-bubble-one" aria-hidden="true">✦</div>
+            <div class="tool-bubble tool-bubble-two" aria-hidden="true">⌁</div>
+            <img
+              class="hero-illustration"
+              src="assets/iwd-voiture-reparation.png"
+              alt="Petit personnage rigolo changeant la roue d’une voiture auto-école I Will Drive"
+            />
+            <div class="road-line" aria-hidden="true"></div>
+          </div>
+
+          <div class="mini-card" aria-hidden="true">
+            <span>✓</span>
+            <p>
+              <strong>Presque prêt</strong>
+              <small>Encore un petit réglage</small>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <p>© <span id="year">2026</span> I Will Drive</p>
+        <p>Auto-école nouvelle génération · Dordogne</p>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
